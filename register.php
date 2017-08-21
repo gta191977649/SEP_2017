@@ -82,6 +82,7 @@
       <label for="pwd"><span style="color: red;">*</span>Email:</label>
       <input type="email" class="form-control" name="mail" ng-model="mail" required>
     </div>
+    <input type="hidden" name="type" value="0"/>
 
 	  <p class="text-right"><a href="login.php">Already have a account?</a></p>
     <div class="form-group">

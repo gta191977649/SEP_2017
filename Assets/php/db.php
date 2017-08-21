@@ -11,14 +11,22 @@ echo $data;
 
 class DB 
 {
-   	require("config.php");
+   	
+	public function db_connect()
+    {
+		require_once("config.php");
+        $handle = new mysqli($DB_HOST,$DB_USER,$DB_PASS,$DB_DB);
+        //echo $handle ? "OK" : "Falid";
+        return $handle;
+    }
 	
+    /*
     public function db_connect($host,$user,$pwd,$dbname)
     {
         $handle = new mysqli($host,$user,$pwd,$dbname);
         return $handle;
     }
-    
+    */
     public function db_close($dbhandle)
     {
         $dbhandle->close();
@@ -33,6 +41,12 @@ class DB
     {
         $row = $result->fetch_assoc();
         return $row["$nage"];
+    }
+
+    public function db_dbCount($result)
+    {
+        $num = mysqli_num_rows($result);
+        return $num ? true : false;
     }
     
 

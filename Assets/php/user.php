@@ -8,10 +8,15 @@ class User {
 	protected $type;
 	protected $username;
 	protected $gender;
+	protected $phone;
 	
-	public function getName($firstName,$lastName)
+	public function getFirstname()
 	{
 		return $this->firstName;
+	}
+
+	public function getLastname()
+	{
 		return $this->lastName;
 	}
 	
@@ -21,7 +26,7 @@ class User {
 		$this->lastName = $lastName;
 	}
 	
-	public function getUid($uid)
+	public function getUid()
 	{
 		return $this->uid;
 	}
@@ -31,7 +36,7 @@ class User {
 		$this->uid = $uid;
 	}
 
-	public function getEmail($email)
+	public function getEmail()
 	{
 		return $this->email;
 	}
@@ -41,7 +46,7 @@ class User {
 		$this->email = $email;
 	}
 
-	public function getPassword($password)
+	public function getPassword()
 	{
 		return $this->password;
 	}
@@ -51,7 +56,7 @@ class User {
 		$this->password = $password;
 	}
 
-	public function getType($type)
+	public function getType()
 	{
 		return $this->type;
 	}
@@ -61,7 +66,7 @@ class User {
 		$this->type = $type;
 	}
 
-	public function getUsername($username)
+	public function getUsername()
 	{
 		return $this->username;
 	}
@@ -71,7 +76,7 @@ class User {
 		$this->username = $username;
 	}
 
-	public function getGender($gender)
+	public function getGender()
 	{
 		return $this->gender;
 	}
