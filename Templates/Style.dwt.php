@@ -42,15 +42,27 @@
     
     <ul class="navbar-nav my-2 my-lg-0">
      
+     <?php require("../Assets/php/auth.php");
+	if(isLog()) { ?>
       <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Login</a>
+           
+            <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><?php 
+				echo getName();
+			?>
+           </a>
             <div class="dropdown-menu" aria-labelledby="dropdown01">
-              <a class="dropdown-item" href="#">Action</a>
-              <a class="dropdown-item" href="#">Another action</a>
-              <a class="dropdown-item" href="#">Something else here</a>
+              <a class="dropdown-item" href="#">Profile</a>
+              <a class="dropdown-item" href="../Assets/php/user_logout.php">Logout</a>
             </div>
-          </li>
+      </li>
       
+      	<?php
+		}
+		else
+		{
+		?>
+      	<a class="nav-link" href="login.php">Login</a>
+      	<?php  } ?>
     </ul>
    
   </div>

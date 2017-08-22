@@ -1,9 +1,9 @@
 <?php
-	function loginForUsr($usrname,$uid)
+	function loginForUsr($usrname)
 	{
-			if (session_status() == PHP_SESSION_NONE) session_start();
-			$_SESSION['login_user']= $uid;
-			$_SESSION['login_name']= $usrname; 
+		if (session_status() == PHP_SESSION_NONE) session_start();
+		$_SESSION['login_user']= $usrname;
+		//$_SESSION['login_name']= $usrname; 
 	}
 	function isLog()
 	{
@@ -22,8 +22,8 @@
 	function getName()
 	{
 		if (session_status() == PHP_SESSION_NONE) session_start();
-  		if(isset($_SESSION['login_name'])){
-  			return $_SESSION['login_name'];
+  		if(isset($_SESSION['login_user'])){
+  			return $_SESSION['login_user'];
   		}
 	}
 

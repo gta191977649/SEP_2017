@@ -1,6 +1,6 @@
 <?php
   //debug
-  require_once("user.php");
+  require_once("UserModel.php");
   require_once("auth.php");
   require_once("notify.php");
   //echo "U: ".$_POST["usr"]. "P: ".$_POST["pwd"];
@@ -10,14 +10,13 @@
     die();
   }
 
-  $usr = new User();
-  $pwdCK = $usr->isPwdCorrect($_POST["usr"],$_POST["pwd"]);
+  $usrModel = new UserModel();
 
-  if($pwdCK) //密碼正確
+
+  if($usrModel->isLoginCorrect($_POST["usr"],$_POST["pwd"])) //密碼正確
   {
     ////////////// 登陆用户 //////////////
-    $uid = $usr->getUserID($_POST["usr"]);
-    loginForUsr($_POST["usr"],$uid);
+    loginForUsr($_POST["usr"]);
     notify("Welcome back ".getName(),"Login Successful, you will be redirect to home.","../../home.php");
   }
   else

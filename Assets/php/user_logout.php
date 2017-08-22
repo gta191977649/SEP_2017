@@ -1,7 +1,6 @@
 <?php
     if (session_status() == PHP_SESSION_NONE) session_start();
     unset($_SESSION["login_user"]);
-    unset($_SESSION["login_name"]);
     header('Refresh: 3; URL = ../../home.php');
 ?>
 <!DOCTYPE html>

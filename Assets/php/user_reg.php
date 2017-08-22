@@ -1,5 +1,5 @@
 <?php
-  require_once("notify.php");
+ 
   
   $usrName;
   $pwd;
@@ -53,9 +53,9 @@
  
 
   
-  require_once("UserController.php");
+  require_once("UserModel.php");
   require_once("user.php");
-  $usrController = new UserController();
+  $usrController = new UserModel();
   if($usrController->isUserExist($usrName)) die("ERROR");
 
   $usr = new User();
@@ -67,21 +67,12 @@
   $usr->setEmail($email);
   $usr->setType($type);
 
-  
-
-
+  //Save
   $usrController->saveUser($usr);
-  
-
-  /*
-  //保存 Session (登录信息)
-  
-  session_start();
-
-  $_SESSION['login_user']= $uid;
-  */
-  //Redirect to home page
-  //notify("Welcome, ".$user,"You have registed, you will be redirect to home.","../../home.php");
+  require_once("auth.php");
+  loginForUsr($usrName);
+  require_once("notify.php");
+  notify("Welcome, ".$usrName,"You have registed, you will be redirect to home.","../../index.php");
   
 
 ?>

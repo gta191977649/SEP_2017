@@ -62,11 +62,11 @@
     	<div class="row">
     	 	<div class="col">
     	 		<label >FirstName:</label>
-    	 		<input type="password" class="form-control" name="firtname" ng-model="firtname"  >
+    	 		<input type="text" class="form-control" name="firtname" ng-model="firtname"  >
 			</div>
 	   	 	<div class="col">
 	   	 		<label >LastName:</label>
-    	 		<input type="password" class="form-control" name="lastname" ng-model="lastname">
+    	 		<input type="text" class="form-control" name="lastname" ng-model="lastname">
 			</div>		
 		</div>
     </div>

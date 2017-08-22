@@ -16,7 +16,7 @@
   $usrController = new UserController();
   $usrController->saveUser($usr);
 	*/
-	class UserController {
+	class UserModel {
 		
 		
 		private $DBhandle;
@@ -60,11 +60,11 @@
 			//$this->dbObj->db_close($this->DBhandle);
 		}
 
-		public function login($userName,$password)
+		public function isLoginCorrect($userName,$password)
 		{
-			
-
-			
+			$SQL = "SELECT * FROM `users` WHERE `password` = '$password' and `username` = '$userName'; ";
+			$result = $this->dbObj->db_query($this->DBhandle,$SQL);
+			return $this->dbObj->db_dbCount($result) ? true : false;
 		}
 		
 	}
