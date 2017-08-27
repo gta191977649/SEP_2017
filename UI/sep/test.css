@@ -1,0 +1,16 @@
+@charset "UTF-8";
+/* CSS Document */
+body{
+	background-color:antiquewhite;
+	padding-top: 40px;
+	padding-bottom: 40px;
+	
+}
+#box{
+	font-size: 50px;
+}
+
+h1{
+	margin-bottom: 10px;
+	padding-left: 300px;
+}
