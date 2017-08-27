@@ -19,7 +19,7 @@
  
 <nav class="navbar navbar-expand-lg navbar-light bg-light ">
  <div class="container">
-  <a class="navbar-brand" href="#">MakeUFULL</a>
+  <a class="navbar-brand" href="home.php">SiteName</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -70,9 +70,13 @@
   </div>
 </nav>
 	<!-- InstanceBeginEditable name="MainContext" -->
-	<div class="container-fluid" style="background: #85C76A;">
-		<div class="container" style="padding-bottom: 80px;">
-			<div class="row">
+
+    
+	<div class="container-fluid">
+	
+		<div class="container" style="margin-top: 35px;">
+				
+				<div class="row">
 			
 			
 		<div class="col-md-10 text-center" style="margin-left: auto; margin-right: auto; margin-top: 100px; margin-bottom: 120px;">
@@ -109,8 +113,11 @@
               <a href="#" class="btn btn-lg btn-secondary">Learn more</a>
             </p>
           </div>
+		
 		</div>
 	</div>
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" ></script>
 	<!-- InstanceEndEditable -->
 
 <footer class="text-muted ">
