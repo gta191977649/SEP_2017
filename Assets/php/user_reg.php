@@ -1,6 +1,6 @@
 <?php
  
-  
+  require_once("notify.php");
   $usrName;
   $pwd;
   $first_name;
@@ -56,7 +56,11 @@
   require_once("UserModel.php");
   require_once("user.php");
   $usrController = new UserModel();
-  if($usrController->isUserExist($usrName)) die("ERROR");
+  if($usrController->isUserExist($usrName)) 
+  {
+      notify("Error","The username is already exisit！","../../register.php","panel-danger");
+      die();
+  }
 
   $usr = new User();
  
@@ -71,7 +75,7 @@
   $usrController->saveUser($usr);
   require_once("auth.php");
   loginForUsr($usrName);
-  require_once("notify.php");
+  
   notify("Welcome, ".$usrName,"You have registed, you will be redirect to home.","../../index.php");
   
 
