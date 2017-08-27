@@ -76,7 +76,7 @@
   require_once("auth.php");
   loginForUsr($usrName);
   
-  notify("Welcome, ".$usrName,"You have registed, you will be redirect to home.","../../index.php");
+  notify("Welcome, ".$usrName,"You have registed, you will be redirect to home.","../../home.php");
   
 
 ?>
