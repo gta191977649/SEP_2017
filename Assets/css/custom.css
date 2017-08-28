@@ -20,5 +20,14 @@ footer {
 	padding-bottom: 10px;
 	
 }
+#bk{
+	background-image:url(../img/b6.jpg);
+	color:aliceblue;
+	background-size:     cover;                    
+    background-repeat:   no-repeat;
+    background-position: center center; 
+	text-shadow: 2px 2px 4px #000000;
+}
+
 
 

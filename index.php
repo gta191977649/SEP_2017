@@ -72,7 +72,7 @@
 	<!-- InstanceBeginEditable name="MainContext" -->
 
     
-	<div class="container-fluid">
+	<div class="container-fluid" id="bk">
 	
 		<div class="container" style="margin-top: 35px;">
 				
@@ -86,10 +86,10 @@
 				 <div class="row">
         <div class="col-md-2" style="margin: 0px; padding: 0px; margin-top: 5px;">
          	  <select class="form-control">
-				<option>1</option>
-				<option>2</option>
-				<option>3</option>
-				<option>4</option>
+				<option>Hurstville</option>
+				<option>Rockdale</option>
+				<option>City</option>
+			
 			  </select>
         </div>
         <div class="col-md-8" style="margin: 0px; padding: 0px; margin-top: 5px;">
@@ -113,7 +113,8 @@
               <a href="#" class="btn btn-lg btn-secondary">Learn more</a>
             </p>
           </div>
-		
+			</br>
+			</br>
 		</div>
 	</div>
 	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
