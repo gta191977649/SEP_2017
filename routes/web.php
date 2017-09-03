@@ -14,3 +14,11 @@
 Route::get('/', function () {
     return view('index');
 });
+
+
+Route::resource('dish','DishController');
+
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

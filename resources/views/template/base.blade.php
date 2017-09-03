@@ -53,7 +53,7 @@
         </div>
     </li>
     -->
-    <a class="nav-link" href="login.php">Login</a>
+    <a class="nav-link" href="{{ route('login') }}">Login</a>
       
     </ul>
    

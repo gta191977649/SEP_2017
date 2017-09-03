@@ -13,7 +13,6 @@
 				<option>Hurstville</option>
 				<option>Rockdale</option>
 				<option>City</option>
-			
 			  </select>
         </div>
         <div class="col-md-8" style="margin: 0px; padding: 0px; margin-top: 5px;">
