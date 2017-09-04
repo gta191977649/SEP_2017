@@ -52,7 +52,12 @@ class DishController extends Controller
     public function show($id)
     {
         //
+        //$data = Dish::find($id);
+        $data = Dish::where('shop_id', $id)->get();
+        //return $data;
+        return view('Dish/view',compact('data'));
     }
+
 
     /**
      * Show the form for editing the specified resource.
