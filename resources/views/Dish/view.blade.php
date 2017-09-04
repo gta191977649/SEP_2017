@@ -10,7 +10,11 @@
 			<li>{{ $dish->avaible }}</li>
 
 		</ul>
-
+		<form action="{{route('dish.destroy', $dish->id)}}" class="pull-xs-right5 card-link" method="POST" style="display:inline">
+            {{csrf_field()}}
+			{{method_field('DELETE')}}
+			<input class="btn btn-sm btn-danger" type="submit" value="Delete">	
+		</form>
 	@endforeach
 
 @endsection

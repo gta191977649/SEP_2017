@@ -67,7 +67,10 @@ class DishController extends Controller
      */
     public function edit($id)
     {
-        //
+        //$user = Auth::user();
+        //$dish = $shop->dishes()->find($id);
+        $dish = Dish::find($id);
+        return view('dish.edit')->with('dish', $dish);
     }
 
     /**
@@ -79,7 +82,9 @@ class DishController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $dish = Dish::find($id);
+        $dish->update($request->all());
+        return redirect('/dish/view');
     }
 
     /**
@@ -90,6 +95,8 @@ class DishController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $dish = Dish::find($id);
+        $dish->delete();
+        return redirect('/dish/view');
     }
 }
