@@ -16,7 +16,7 @@ Route::get('/', function () {
 });
 
 
-Route::resource('dish','DishController');
+Route::resource('ucp/dish','DishAdminController');
 
 
 Auth::routes();

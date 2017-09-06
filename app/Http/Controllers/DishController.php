@@ -24,8 +24,7 @@ class DishController extends Controller
      */
     public function create()
     {
-        //返回前端View
-        return view('dish/create');
+
     }
 
     /**
@@ -36,12 +35,7 @@ class DishController extends Controller
      */
     public function store(Request $request)
     {
-        //
-        $data = $request->all();
-        //print_r($data);
-        Dish::create($data);
-        //return
-        return $this->show(0);//0 为商店id
+
     }
 
     /**
@@ -52,11 +46,7 @@ class DishController extends Controller
      */
     public function show($id)
     {
-        //
-        //$data = Dish::find($id);
-        $data = Dish::where('shop_id', $id)->get();
-        //return $data;
-        return view('dish/view',compact('data'));
+
     }
 
 
@@ -68,10 +58,7 @@ class DishController extends Controller
      */
     public function edit($id)
     {
-        //$user = Auth::user();
-        //$dish = $shop->dishes()->find($id);
-        $dish = Dish::find($id);
-        return view('dish.edit')->with('dish', $dish);
+  
     }
 
     /**
@@ -83,9 +70,7 @@ class DishController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $dish = Dish::find($id);
-        $dish->update($request->all());
-        return redirect('dish/view');
+   
     }
 
     /**
@@ -96,8 +81,6 @@ class DishController extends Controller
      */
     public function destroy($id)
     {
-        $dish = Dish::find($id);
-        $dish->delete();
-        return redirect('dish/view');
+   
     }
 }
