@@ -1,0 +1,129 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>homepage</title>
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+      <a class="navbar-brand" href="#">///!!</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Register</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link disabled" href="#">Login</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Location</a>
+            <div class="dropdown-menu" aria-labelledby="dropdown01">
+              <a class="dropdown-item" href="#">city</a>
+              <a class="dropdown-item" href="#">ultimo</a>
+              <a class="dropdown-item" href="#">wolli creek</a>
+              <a class="dropdown-item" href="#">rockdale</a>
+              <a class="dropdown-item" href="#">kogarah</a>
+              <a class="dropdown-item" href="#">hurstville</a>
+              <a class="dropdown-item" href="#">burwood</a>
+              <a class="dropdown-item" href="#">search more</a>
+            </div>
+          </li>
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+          <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+      </div>
+    </nav>
+	<div class="jumbotron">
+      <div class="container">
+        <h1 class="display-3">Hello, world!</h1>
+        <p>We develop new ideas and technologies to optimise food production systems, with a focus on nutrition. As these systems are affected by economical, social and environmental constraints, we explore a balance all three. </p>
+        <p><a class="btn btn-primary btn-lg" href="#" role="button">start &raquo;</a></p>
+      </div>
+	</div>
+	<div id="list" class=" picutre_many"
+        style="overflow: hidden; height:380px; width: 1000px; margin: 0 auto;">
+        <table cellspacing="0" cellpadding="0" 
+            style="width: 680px; border: 5px solid #676161   ">
+            <tr>
+                <td id="list1">
+                    <table style="border: 0px;" cellpadding="0" cellspacing="0">
+                        <tr id="pic">
+                           
+                            <td><img style="border: 0px;"></td>
+                            <td><img style="border: 0px;" alt="" src="online-food-delivery.jpg" /></td>
+                            <td><img style="border: 0px;" alt="" src="g3_Fotor.png" /></td>
+                            <td><img style="border: 0px;" alt="" src="g1_Fotor.png"/></td>
+                            <td><img style="border: 0px;" alt="" src="rise_Fotor.jpg"/></td>
+                            <td><img style="border: 0px;" alt="" src="Burger_Fotor.jpg"/></td>
+                            <td><img style="border: 0px;" alt="" src="c2_Fotor.jpg"></td>
+                        </tr>
+                    </table>
+                </td>
+                <td id="list2"></td>
+            </tr>
+        </table>
+    </div>
+    <script type="text/javascript">
+        /*图片滚动效果*/
+        var speedpic = 15;
+        document.getElementById("list2").innerHTML = document.getElementById("list1").innerHTML;
+        function Marqueepic() {
+            if (document.getElementById("list2").offsetWidth
+                    - document.getElementById("list").scrollLeft <= 0) {
+                document.getElementById("list").scrollLeft -= document
+                        .getElementById("list1").offsetWidth;
+            } else {
+                document.getElementById("list").scrollLeft++;
+            }
+        }
+        var MyMarpic = setInterval(Marqueepic, speedpic);
+        document.getElementById("list").onmouseover = function() {
+            clearInterval(MyMarpic);
+        }
+        document.getElementById("list").onmouseout = function() {
+            MyMarpic = setInterval(Marqueepic, speedpic);
+        }
+    </script>
+
+<hr>
+<div class="container">
+      <!-- Example row of columns -->
+      <div class="row">
+        <div class="col-md-4">
+          <h2>Shop owner</h2>
+          <p>if you are shop owner, you must want you bussiness to show an uptrend.To register for the store and accept more guests </p>
+          <p><a class="btn btn-secondary" href="#" role="button">Register &raquo;</a></p>
+        </div>
+        <div class="col-md-4">
+          <h2>customer</h2>
+          <p>As a diner, at home must not go out to rest it. Register our account and start your bookimh tour,  </p>
+          <p><a class="btn btn-secondary" href="#" role="button">Register &raquo;</a></p>
+        </div>
+        <div class="col-md-4">
+          <h2>Delivery man</h2>
+          <p> become a good delivery. we need you, you can find a good job.and get a hight pay. Register in the system, you can find a good job.</p>
+          <p><a class="btn btn-secondary" href="#" role="button">Register&raquo;</a></p>
+        </div>
+      </div>
+	</div>
+      <hr>
+      
+      <footer style="padding-left: 600px;">
+        <p>&copy; SEP group-PG Two</p>
+      </footer>
+</body>
+</html> 
