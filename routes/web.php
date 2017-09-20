@@ -13,7 +13,7 @@
 
 Route::get('/', function () {
     return view('index');
-});
+})->name('index');
 
 
 Route::resource('ucp/dish','DishAdminController');
@@ -22,3 +22,4 @@ Route::resource('ucp/dish','DishAdminController');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/search','SearchController@all')->name('search.all');
