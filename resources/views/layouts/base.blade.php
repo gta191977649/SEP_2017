@@ -123,7 +123,7 @@
                             </a>
 
                             <ul class="dropdown-menu" role="menu">
-                                <li><a href=""><span class="glyphicon glyphicon-user"></span> UCP</a></li>
+                                <li><a href="{{ route('ucp.index') }}"><span class="glyphicon glyphicon-user"></span> UCP</a></li>
                                 <li>
                                     <a href="{{ route('logout') }}"
                                         onclick="event.preventDefault();
