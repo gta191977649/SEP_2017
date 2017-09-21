@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Dish;
+use App\Shop;
 class DishAdminController extends Controller
 {
        /**
@@ -22,10 +23,9 @@ class DishAdminController extends Controller
       *
       * @return \Illuminate\Http\Response
       */
-     public function create()
-     {
-         //返回前端View
-         return view('ucp/dish/create');
+     public function create($shop){
+        //返回前端View
+        return view('ucp/dish/create',compact('shop'));
      }
  
      /**
@@ -34,14 +34,17 @@ class DishAdminController extends Controller
       * @param  \Illuminate\Http\Request  $request
       * @return \Illuminate\Http\Response
       */
-     public function store(Request $request)
+     public function store(Request $request,$shop_id)
      {
          //
-         $data = $request->all();
+         $dishs = $request->all();
          //print_r($data);
-         Dish::create($data);
+         $Shop = Shop::find($shop_id);
+         $Shop->dishs()->create($dishs);
+         //Dish::create($dishs);
          //return
-         return $this->show(0);//0 为商店id
+         //$shop_id = $request->shop_id;
+         return redirect()->route('ucp.shop.show', compact('shop_id'));//0 为商店id
      }
  
      /**
@@ -54,9 +57,9 @@ class DishAdminController extends Controller
      {
          //
          //$data = Dish::find($id);
-         $data = Dish::where('shop_id', $id)->get();
+         $dish = Dish::find($id);
          //return $data;
-         return view('ucp/dish/view',compact('data'));
+         return view('ucp/dish/index',compact('dish'));
      }
  
  
@@ -66,12 +69,16 @@ class DishAdminController extends Controller
       * @param  int  $id
       * @return \Illuminate\Http\Response
       */
-     public function edit($id)
+     public function edit($shop_id,$dish_id)
      {
-         //$user = Auth::user();
-         //$dish = $shop->dishes()->find($id);
-         $dish = Dish::find($id);
-         return view('ucp/dish.edit')->with('dish', $dish);
+        //$user = Auth::user();
+        //$dish = $shop->dishes()->find($id);
+        //$dish = Dish::findOrFail($dish_id);
+        $Shop = Shop::find($shop_id);
+        $dish = $Shop->dishs()->find($dish_id);
+        //return $dish;
+        return view('ucp/dish.edit')->with('dish', $dish);
+         
      }
  
      /**
@@ -81,11 +88,17 @@ class DishAdminController extends Controller
       * @param  int  $id
       * @return \Illuminate\Http\Response
       */
-     public function update(Request $request, $id)
+     public function update(Request $request,$shop_id, $dish_id)
      {
-         $dish = Dish::find($id);
-         $dish->update($request->all());
-         return redirect('ucp/dish/view');
+         
+         //$dish = Dish::find($id);
+        $Shop = Shop::find($shop_id);
+        //return  $Shop;
+        $dish = $Shop->dishs()->find($dish_id);
+        $dish->update($request->all());
+         //return redirect()->route('shop.dish.show', compact('shop_id'));
+        return redirect()->route('ucp.shop.show', compact('shop_id'));
+         //return $request->all();
      }
  
      /**
@@ -94,10 +107,12 @@ class DishAdminController extends Controller
       * @param  int  $id
       * @return \Illuminate\Http\Response
       */
-     public function destroy($id)
+     public function destroy($shop_id, $dish_id)
      {
-         $dish = Dish::find($id);
-         $dish->delete();
-         return redirect('ucp/dish/view');
+        $Shop = Shop::find($shop_id);
+        $dish = $Shop->dishs()->find($dish_id);
+        $dish->delete();
+        //return redirect('ucp/dish/index');
+        return back();
      }
 }

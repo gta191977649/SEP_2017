@@ -19,14 +19,24 @@ Route::get('/', function () {
 Route::resource('ucp/dish','DishAdminController');
 Route::group(['middleware'=>'auth'], function(){
     
+        //Shop
         Route::get('/restauranthome/view', 'RestaurantController@tpView')->name('view');
         Route::get('/restauranthome/edit/{id}', 'RestaurantController@edit')->name('edit');
         Route::get('/restauranthome/create', 'RestaurantController@create')->name('create');
         Route::post('/restauranthome/store', 'RestaurantController@store');
         Route::post('/restauranthome/update/{id}', 'RestaurantController@update')->name('update');
         Route::delete('restauranthome/delete/{id}', 'RestaurantController@destroy')->name('delete');
-        Route::get('/restauranthome', 'RestaurantController@tpRestaurant');
-            
+        Route::get('/restauranthome', 'RestaurantController@tpRestaurant')->name('shop.home');
+
+        //Contact
+        Route::resource('ucp/contact','ContactAdminController',[
+            'as' => 'ucp'
+        ]);
+        Route::post('ucp/contact/{id}/default','ContactAdminController@default')->name('ucp.contact.default'); 
+
+        //UCP Home
+        Route::get('ucp/index','UcpController@index')->name('ucp.index');
+        
     });
 
 

@@ -91,14 +91,14 @@
         <li>
           <a class="am-cf" data-am-collapse="{target: '#collapse-nav1'}"><span class="am-icon-archive"></span> Shops<span class="am-icon-angle-right am-fr am-margin-right"></span></a>
           	<ul class="am-list am-collapse admin-sidebar-sub " id="collapse-nav1">
-	            <li><a href="{{ route('shop.home') }}" class="am-cf"><span class="am-icon-archive"></span> My Shops</a></li> 
+	            <li><a href="" class="am-cf"><span class="am-icon-archive"></span> My Shops</a></li> 
           	</ul>
         </li>
         <!-- Order管理 -->  
         <li>
           <a class="am-cf" data-am-collapse="{target: '#collapse-nav3'}"><span class="am-icon-shopping-cart"></span> Order Management<span class="am-icon-angle-right am-fr am-margin-right"></span></a>
           	<ul class="am-list am-collapse admin-sidebar-sub " id="collapse-nav3">
-	            <li><a href="#" class="am-cf"><span class="am-icon-list"></span> View Orders</a></li> 
+	            <li><a href="" class="am-cf"><span class="am-icon-list"></span> View Orders</a></li> 
           	</ul>
         </li>
        
@@ -107,8 +107,8 @@
         <li>
           <a class="am-cf" data-am-collapse="{target: '#collapse-nav2'}"><span class="am-icon-shopping-cart"></span> Transaction<span class="am-icon-angle-right am-fr am-margin-right"></span></a>
           	<ul class="am-list am-collapse admin-sidebar-sub " id="collapse-nav2">
-              <li><a href="#" class="am-cf"><span class="am-icon-shopping-cart"></span> View Shopping Cart</a></li> 
-	            <li><a href="#" class="am-cf"><span class="am-icon-list"></span> View Transactions</a></li> 
+              <li><a href="" class="am-cf"><span class="am-icon-shopping-cart"></span> View Shopping Cart</a></li> 
+	            <li><a href="" class="am-cf"><span class="am-icon-list"></span> View Transactions</a></li> 
           	</ul>
         </li>
       

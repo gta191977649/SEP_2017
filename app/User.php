@@ -30,4 +30,7 @@ class User extends Authenticatable
     public function restaurants(){
         return $this->hasMany('App\Restaurant');
     }
+    public function contacts(){
+        return $this->hasMany('App\Contact');
+    }
 }
