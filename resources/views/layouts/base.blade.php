@@ -35,10 +35,11 @@
 </head>
 
 <body>
-
+    {{--
     @if (Session::has('style'))
         @include('addtional.dev')
     @endif
+    --}}
     <!-- 导航栏 -->
     <nav class="navbar navbar-default" role="navigation">
         <div class="container">
@@ -98,6 +99,7 @@
                         </li>
                         @else
                         <li>
+                        {{--
                         <a href="{{ route('ucp.notify.index') }}"><span class="glyphicon glyphicon-bell"></span> Notifications 
                             @if(Auth::user()->notifications->where('read',0)->count())
                                 <span class="badge"> {{ Auth::user()->notifications->where('read',0)->count() }} </span>
@@ -113,7 +115,7 @@
                                 @endif
                                 </a></li>
                         @endif
-    
+                        --}}
                          
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
@@ -121,7 +123,7 @@
                             </a>
 
                             <ul class="dropdown-menu" role="menu">
-                                <li><a href="{{ route('ucp.index') }}"><span class="glyphicon glyphicon-user"></span> UCP</a></li>
+                                <li><a href=""><span class="glyphicon glyphicon-user"></span> UCP</a></li>
                                 <li>
                                     <a href="{{ route('logout') }}"
                                         onclick="event.preventDefault();
