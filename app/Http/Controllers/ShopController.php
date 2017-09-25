@@ -4,20 +4,20 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use App\Restaurant;
-class RestaurantController extends Controller
+use App\Shop;
+use App\Order;
+
+class ShopController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function tpView()
+    public function index($shopid)
     {
-        //
-        $user = Auth::user();
-        $r1 = $user->restaurants;
-        return view('viewR', compact('r1'));
+        
+        
     }
 
     /**
@@ -28,7 +28,6 @@ class RestaurantController extends Controller
     public function create()
     {
         //
-        return view('createR');
     }
 
     /**
@@ -39,18 +38,8 @@ class RestaurantController extends Controller
      */
     public function store(Request $request)
     {
-
-
-        Restaurant::create([
-            "name" => $request->name,
-            "description" => $request->description,
-            "contactNumber" => $request->contactNumber,
-            "shopImage" => $request->shopImage,
-            "user_id" => Auth::user()->id,
-
-        ]);
+        //
         
-        return view('restauranthome');
     }
 
     /**
@@ -61,7 +50,12 @@ class RestaurantController extends Controller
      */
     public function show($id)
     {
-        //
+        $Shop = Shop::findOrFail($id);
+        /*
+        $order = Order::where('user_id',Auth::user()->id)->first();
+        if($order) $items = $order->orderItems;
+        */
+        return view('shop.index',compact('Shop'));
     }
 
     /**
@@ -73,9 +67,6 @@ class RestaurantController extends Controller
     public function edit($id)
     {
         //
-        $user = Auth::user();
-        $res = $user->restaurants->find($id);
-        return view('editR',compact('res'));
     }
 
     /**
@@ -87,21 +78,8 @@ class RestaurantController extends Controller
      */
     public function update(Request $request, $id)
     {
-
-        Restaurant::find($id)->update([
-            "name" => $request->name,  
-            "description" => $request->description,
-            "contactNumber" => $request->contactNumber,
-            "shopImage" => $request->shopImage,
-            "user_id" => Auth::user()->id,
-        ]);
-        return view('restauranthome');
+        //
     }
-
-    public function tpRestaurant(){
-        return view('restauranthome');
-    }
-    
 
     /**
      * Remove the specified resource from storage.
@@ -109,15 +87,8 @@ class RestaurantController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    
-  
     public function destroy($id)
     {
-           Restaurant::find($id)->delete();
-           return view('restauranthome');
-        
-    }   
-
-
+        //
+    }
 }
-    
