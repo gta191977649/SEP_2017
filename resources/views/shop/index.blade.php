@@ -1,6 +1,4 @@
 @extends('layouts.base')
-
-
 @section('main')
 <script src="{{ asset('js/jquery.bootstrap-touchspin.js') }}"></script>
 <link href="{{ asset('css/jquery.bootstrap-touchspin.css') }}" rel="stylesheet" type="text/css">

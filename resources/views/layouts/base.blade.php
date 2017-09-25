@@ -99,24 +99,15 @@
                         </li>
                         @else
                         <li>
-                        {{--
-                        <a href="{{ route('ucp.notify.index') }}"><span class="glyphicon glyphicon-bell"></span> Notifications 
-                            @if(Auth::user()->notifications->where('read',0)->count())
-                                <span class="badge"> {{ Auth::user()->notifications->where('read',0)->count() }} </span>
-                            @endif
-                        </a>
+   
+                        <li><a href="{{ route('order.cart') }}">
+                        <span class="glyphicon glyphicon-shopping-cart"></span>
+                        Shopping Cart 
+            
+                        </a></li>
+                        
                         </li>
-                        @if( Auth::user()->user_type != 1)
-                                <li><a href="{{ route('order.cart') }}">
-                                <span class="glyphicon glyphicon-shopping-cart"></span>
-                                Shopping Cart 
-                                @if(Auth::user()->orders->count())
-                                    <span class="badge"> {{ Auth::user()->orders->count() }} </span>
-                                @endif
-                                </a></li>
-                        @endif
-                        --}}
-                         
+                        
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                             <span class="glyphicon glyphicon-user"></span>    {{ Auth::user()->name }} <span class="caret"></span>

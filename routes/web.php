@@ -36,6 +36,11 @@ Route::group(['middleware'=>'auth'], function(){
         //UCP Home
         Route::get('ucp/index','UcpController@index')->name('ucp.index');
 });
+//Order
+Route::post('order/add/{shopId}/{dishId}','OrderController@addItem')->name('order.add');
+Route::get('order/remove/{id}', 'OrderController@removeItem')->name('order.remove');
+Route::get('order/cart', 'OrderController@showCart')->name('order.cart');
+Route::post('order/comfirm/{id}', 'OrderController@comfirm')->name('order.comfirm');
 
 //User
 Route::get('/home', 'HomeController@index')->name('home');
