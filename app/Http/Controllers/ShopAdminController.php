@@ -135,7 +135,7 @@ class ShopAdminController extends Controller
             $uploadFile->move('uploads', $filename);
 
             $user = Auth::user();
-            $user->shops()->update([
+            $user->shops()->find($id)->update([
                 'shop_name' => $request->shop_name,
                 'shop_pic' => $prefix.$filename,
                 'shop_des' => $request->shop_des,   
