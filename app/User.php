@@ -27,8 +27,8 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-    public function restaurants(){
-        return $this->hasMany('App\Restaurant');
+    public function shops(){
+        return $this->hasMany('App\Shop');
     }
     public function contacts(){
         return $this->hasMany('App\Contact');
