@@ -8,8 +8,11 @@ use App\Shop;
 
 class SearchController extends Controller
 {
-    public function all()
+    public function all(Request $req)
     {   
-        return view('search/all/index');
+        $keyword = $req->keyword;
+        $result_shop = Shop::where('shop_name', 'LIKE','%'.$req->keyword.'%')->get();
+        $result_dish = Dish::where('dishName', 'LIKE','%'.$req->keyword.'%')->get();
+        return view('search/all/index',compact('result_shop','result_dish','keyword'));
     }
 }

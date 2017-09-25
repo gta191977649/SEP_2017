@@ -98,14 +98,13 @@
                             </ul>
                         </li>
                         @else
-                        <li>
-   
                         <li><a href="{{ route('order.cart') }}">
-                        <span class="glyphicon glyphicon-shopping-cart"></span>
-                        Shopping Cart 
-            
-                        </a></li>
-                        
+                            <span class="glyphicon glyphicon-shopping-cart"></span>
+                                Shopping Cart 
+                                @if(Auth::user()->orders->count())
+                                    <span class="badge"> {{ Auth::user()->orders->count() }} </span>
+                                @endif
+                            </a>
                         </li>
                         
                         <li class="dropdown">
