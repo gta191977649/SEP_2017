@@ -17,7 +17,7 @@ class CreateShopsTable extends Migration
             $table->increments('id');
             $table->string('shop_name');
             $table->text('shop_des');
-            $table->text('shop_pic');
+            $table->text('shop_pic')->nullable();
             $table->string('shop_street_number');
             $table->string('shop_street');
             $table->string('shop_city');
