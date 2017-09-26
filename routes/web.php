@@ -35,6 +35,12 @@ Route::group(['middleware'=>'auth'], function(){
 
         //UCP Home
         Route::get('ucp/index','UcpController@index')->name('ucp.index');
+
+        //Order
+        Route::resource('ucp/order','OrderAdminController',[
+            'as' => 'ucp'
+        ]);
+        
 });
 //Order
 Route::post('order/add/{shopId}/{dishId}','OrderController@addItem')->name('order.add');
