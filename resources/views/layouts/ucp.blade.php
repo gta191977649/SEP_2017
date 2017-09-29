@@ -84,9 +84,6 @@
 	        	
           	</ul>
         </li>
-
-        
-       
         <!-- Shop管理页面 -->
         <li>
           <a class="am-cf" data-am-collapse="{target: '#collapse-nav1'}"><span class="am-icon-archive"></span> Shops<span class="am-icon-angle-right am-fr am-margin-right"></span></a>

@@ -43,8 +43,10 @@
     </div>
 
 
-    <form action="#" method="POST">
+    <form action="{{ route('order.store',$order->id) }}" method="POST">
     {{csrf_field()}}
+
+
     @if($contacts->count())
     <table class="table table-striped">
         <thead>

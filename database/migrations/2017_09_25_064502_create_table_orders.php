@@ -21,6 +21,7 @@ class CreateTableOrders extends Migration
             $table->text('delivery_address')->nullable();
             $table->string('delivery_contact')->nullable();//这里是收货人名字和电话号
             $table->text('note')->nullable();
+            $table->integer('state')->nullable();
             $table->timestamps();
         });
 
