@@ -35,10 +35,18 @@ Route::group(['middleware'=>'auth'], function(){
 
         //UCP Home
         Route::get('ucp/index','UcpController@index')->name('ucp.index');
+<<<<<<< HEAD
+=======
+
+>>>>>>> 9ae4ee654d5bf1188937325bb164064bd72d0bce
         //Order
         Route::resource('ucp/order','OrderAdminController',[
             'as' => 'ucp'
         ]);
+<<<<<<< HEAD
+=======
+        
+>>>>>>> 9ae4ee654d5bf1188937325bb164064bd72d0bce
 });
 //Order
 Route::post('order/add/{shopId}/{dishId}','OrderController@addItem')->name('order.add');
