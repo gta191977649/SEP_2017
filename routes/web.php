@@ -67,17 +67,3 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/search','SearchController@all')->name('search.all');
-
-
-
-Route::get('/0xFF',function(Request $request){
-    $request->session()->put('style', 'behind_scene');
-    return view('index');
-});
-
-Route::get('/0x00',function(Request $request){
-    $request->session()->forget('style');
-    return view('index');
-});
-
-
