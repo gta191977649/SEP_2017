@@ -8,7 +8,6 @@ use App\Order;
 use App\OrderItem;
 use App\Contact;
 use DB;
-use App\OrderState;
 
 
 class OrderController extends Controller
@@ -45,35 +44,21 @@ class OrderController extends Controller
         {
             $total_price+= $orderItem->dish->price;
         }
-
+       
         return view('order.confirm',compact('order','orderItems','total_price','contacts'));
         //return $order->orderItemsQty;
         
     }
-    public function storeOrder(Request $request,$orderId)
-    {
-        $order = Order::find($orderId);
-        $con = Contact::find($request->selected_address);
-        $order->update([
-            "delivery_address" => $con->cont_street_number.", ".$con->cont_street.", ".$con->cont_state.", ".$con->cont_zipcode,
-            "delivery_contact" => $con->cont_firstname." ".$con->cont_lastname,
-            "note" => $request->note,
-            "state" => OrderState::ORDER_COMFIRMED
-        ]);
-        //return $order;
-        return view('order.secuess');
-    }
-
     public function addItem (Request $req,$shopId,$dishId){
     
         $order = Order::where('user_id',Auth::user()->id)->where('shop_id', $shopId)->first();
     
-        if(!$order)
-        {
-            $order =  new Order();
-            $order->user_id=Auth::user()->id;
-            $order->shop_id = $shopId;
-            $order->save();
+        
+        if(!$order){
+                $order =  new Order();
+                $order->user_id=Auth::user()->id;
+                $order->shop_id = $shopId;
+                $order->save();
         }
     
         $orderItem  = new Orderitem();
@@ -84,9 +69,12 @@ class OrderController extends Controller
     
         //return redirect('/cart');
         return back();
+        
+        
+        
     }
     public function showCart(){
-        $orders = Order::where('user_id',Auth::user()->id)->where("state",NULL)->get();
+        $orders = Order::where('user_id',Auth::user()->id)->get();
 
         /*
         if(!$order){
@@ -102,7 +90,7 @@ class OrderController extends Controller
         foreach($items as $item){
             $total+=$item->dish->price;
         }
-        */
+*/
         //return $order;
         return view('order.cart',compact('orders'));
     }
@@ -129,7 +117,5 @@ class OrderController extends Controller
         //return OrderItem::where('shop_id', $orders->shop_id)->count();
         return back();
     }
-
- 
 
 }

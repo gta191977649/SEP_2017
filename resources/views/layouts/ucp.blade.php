@@ -46,8 +46,10 @@
   <div class="am-collapse am-topbar-collapse" id="topbar-collapse">
 
     <ul class="am-nav am-nav-pills am-topbar-nav am-topbar-right admin-header-list">
-      	<li><a href=""><span class="am-icon-bell"></span> Notification 
-        
+      	<li><a href="{{ route('ucp.notify.index') }}"><span class="am-icon-bell"></span> Notification 
+        @if(Auth::user()->notifications->where('read',0)->count() )
+          <span class="am-badge am-badge-warning">{{  Auth::user()->notifications->where('read',0)->count()  }}</span></a></li>
+        @endif
       	<li class="am-dropdown" data-am-dropdown>
 	        <a class="am-dropdown-toggle" data-am-dropdown-toggle href="javascript:;">
 	          	<span class="am-icon-user"></span> {{ Auth::user()->name }} <span class="am-icon-caret-down"></span>
@@ -84,6 +86,9 @@
 	        	
           	</ul>
         </li>
+
+        
+        @if( Auth::user()->user_type == 1)
         <!-- Shop管理页面 -->
         <li>
           <a class="am-cf" data-am-collapse="{target: '#collapse-nav1'}"><span class="am-icon-archive"></span> Shops<span class="am-icon-angle-right am-fr am-margin-right"></span></a>
@@ -95,20 +100,20 @@
         <li>
           <a class="am-cf" data-am-collapse="{target: '#collapse-nav3'}"><span class="am-icon-shopping-cart"></span> Order Management<span class="am-icon-angle-right am-fr am-margin-right"></span></a>
           	<ul class="am-list am-collapse admin-sidebar-sub " id="collapse-nav3">
-	            <li><a href="{{ route('ucp.order.index') }}" class="am-cf"><span class="am-icon-list"></span> View Orders</a></li> 
+	            <li><a href="" class="am-cf"><span class="am-icon-list"></span> View Orders</a></li> 
           	</ul>
         </li>
-       
+        @endif
         
-  
+        @if( Auth::user()->user_type == 0)
         <li>
           <a class="am-cf" data-am-collapse="{target: '#collapse-nav2'}"><span class="am-icon-shopping-cart"></span> Transaction<span class="am-icon-angle-right am-fr am-margin-right"></span></a>
           	<ul class="am-list am-collapse admin-sidebar-sub " id="collapse-nav2">
-              <li><a href="#" class="am-cf"><span class="am-icon-shopping-cart"></span> View Shopping Cart</a></li> 
-	            <li><a href="#" class="am-cf"><span class="am-icon-list"></span> View Transactions</a></li> 
+              <li><a href="{{ route('order.cart') }}" class="am-cf"><span class="am-icon-shopping-cart"></span> View Shopping Cart</a></li> 
+	            <li><a href="" class="am-cf"><span class="am-icon-list"></span> View Transactions</a></li> 
           	</ul>
         </li>
-      
+        @endif
         
       </ul>
       <form class="am-form">

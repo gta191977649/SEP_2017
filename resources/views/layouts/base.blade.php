@@ -35,11 +35,10 @@
 </head>
 
 <body>
-    {{--
+
     @if (Session::has('style'))
         @include('addtional.dev')
     @endif
-    --}}
     <!-- 导航栏 -->
     <nav class="navbar navbar-default" role="navigation">
         <div class="container">
@@ -98,15 +97,24 @@
                             </ul>
                         </li>
                         @else
-                        <li><a href="{{ route('order.cart') }}">
-                            <span class="glyphicon glyphicon-shopping-cart"></span>
+                        <li>
+                        <a href="{{ route('ucp.notify.index') }}"><span class="glyphicon glyphicon-bell"></span> Notifications 
+                            @if(Auth::user()->notifications->where('read',0)->count())
+                                <span class="badge"> {{ Auth::user()->notifications->where('read',0)->count() }} </span>
+                            @endif
+                        </a>
+                        </li>
+                        @if( Auth::user()->user_type != 1)
+                                <li><a href="{{ route('order.cart') }}">
+                                <span class="glyphicon glyphicon-shopping-cart"></span>
                                 Shopping Cart 
-                                @if(Auth::user()->orders->where("state",0)->count())
+                                @if(Auth::user()->orders->count())
                                     <span class="badge"> {{ Auth::user()->orders->count() }} </span>
                                 @endif
-                            </a>
-                        </li>
-                        
+                                </a></li>
+                        @endif
+    
+                         
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                             <span class="glyphicon glyphicon-user"></span>    {{ Auth::user()->name }} <span class="caret"></span>
@@ -175,8 +183,10 @@
                     <h5>Contract</h5>
                     <ul class="list-unstyled">
                         <li><a href="#">A</a></li>
-                        <li><a href="/0x00">B</a></li>
-                        <li><a href="/0xFF">C</a></li>
+                        
+                        <li><a href="/0x00">B {{ Session::has('style') ? "(Don't touch me!) =w=" : ""}}</a></li>
+                       
+                        <li><a href="/0xFF">C {{ Session::has('style') ? "" : "(Nothing here)"}}</a></li>
                     </ul>
                 </div>
 

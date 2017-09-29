@@ -42,11 +42,8 @@
         </table>
     </div>
 
-
-    <form action="{{ route('order.store',$order->id) }}" method="POST">
-    {{csrf_field()}}
-
-
+    <!-- 选择送货地址 -->
+    <form action="{{ route('transaction.create', $order->id ) }}" method="GET">
     @if($contacts->count())
     <table class="table table-striped">
         <thead>
@@ -102,6 +99,7 @@
             <p><a href="{{ route('ucp.contact.index') }}">Click here</a> to create a new contact.</p>
         </div>
         </div>
+        <!-- 无数据的时候提示 -->
         <button type="submit" class="btn btn-success pull-right" disabled><span class="glyphicon glyphicon-ok"></span> Confirm </button>
     @endif
 
