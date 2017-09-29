@@ -7,6 +7,10 @@ use DB;
 class Order extends Model
 {
     //
+    protected $fillable = [
+        'delivery_contact', 'delivery_address', 'shop_id','note','state'
+    ];
+
     public function user()
     {
         return $this->belongsTo('App\User');

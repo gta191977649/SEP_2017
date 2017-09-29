@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Dish;
 use App\Shop;
-use App\OrderItem
+use App\OrderItem;
 class OrderIremAdminController extends Controller
 {
        /**
