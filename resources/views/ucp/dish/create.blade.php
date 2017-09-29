@@ -27,7 +27,7 @@
                                     <textarea class="am-form-field am-radius" placeholder="Description" name="dishDes" rows="5" required></textarea>
                                 </div>
                                 <div class="am-form-group">
-                                    <input class="am-form-field am-radius" type="hidden" name="avaible" value="1" checked>
+                                    <input class="am-form-field am-radius" type="hidden" name="avaible" value="1">
                                 </div>
                                 <div class="am-form-group">
                                     <label class="am-checkbox-inline">

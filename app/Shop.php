@@ -21,5 +21,9 @@ class Shop extends Model
     public function owner(){
         return $this->belongsTo('App\User');
     }
-   
+
+    public function shopSales()
+    {
+        return $this->hasMany('App\ShopSell');
+    }
 }

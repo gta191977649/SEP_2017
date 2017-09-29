@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateDishesTable extends Migration
+class CreateTableOrders extends Migration
 {
     /**
      * Run the migrations.
@@ -13,24 +13,22 @@ class CreateDishesTable extends Migration
      */
     public function up()
     {
-        Schema::create('dishes', function (Blueprint $table) {
-
+        //
+        Schema::create('orders', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('dishName');
-            $table->text('dishPic')->nullable();
-            $table->text('dishDes');
-            $table->double('price');
+            $table->integer('user_id')->unsigned();
             $table->integer('shop_id')->unsigned();
-            //$table->foreign('shop_id')->references('id')->on('shops')->onDelete('cascade');
-            $table->boolean('avaible')->default(1);
-            
+            $table->text('delivery_address')->nullable();
+            $table->string('delivery_contact')->nullable();//这里是收货人名字和电话号
+            $table->text('note')->nullable();
             $table->timestamps();
         });
 
-        Schema::table('dishes', function($table) {
+        Schema::table('orders', function($table) {
             $table->foreign('shop_id')->references('id')->on('shops')->onDelete('cascade');
-
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
+
     }
 
     /**
@@ -40,6 +38,8 @@ class CreateDishesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('dishes');
+        //
+        Schema::drop('orders');
+        
     }
 }

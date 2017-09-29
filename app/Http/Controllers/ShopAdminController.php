@@ -15,21 +15,6 @@ class ShopAdminController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    /*
-    public function tpView()
-    {
-        //
-        $user = Auth::user();
-        $r1 = $user->restaurants;
-        return view('viewR', compact('r1'));
-    }
-    */
-
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
         $user = Auth::user();
@@ -135,7 +120,7 @@ class ShopAdminController extends Controller
             $uploadFile->move('uploads', $filename);
 
             $user = Auth::user();
-            $user->shops()->find($id)->update([
+            $user->shops()->update([
                 'shop_name' => $request->shop_name,
                 'shop_pic' => $prefix.$filename,
                 'shop_des' => $request->shop_des,   
@@ -164,9 +149,4 @@ class ShopAdminController extends Controller
         $shop->delete();
         return redirect('ucp/shop');
     }
-    /*
-    public function tpRestaurant(){
-        return view('restauranthome');
-    }
-    */
 }
