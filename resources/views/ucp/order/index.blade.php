@@ -24,13 +24,7 @@
 								<td class="am-hide-sm-only">{{$order->delivery_address}}</td>
 								<td class="am-hide-sm-only">{{$order->created_at}}</td>
 								<td>
-                                    @php
-										switch($order->state)
-										{
-											case 
-										}
-
-									@endphp
+                                 
 								</td>
 							</tr>
 
