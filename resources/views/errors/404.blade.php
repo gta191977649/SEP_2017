@@ -5,7 +5,7 @@
   <div class="panel-heading">Error {{$exception->getMessage()}}</div>
   <div class="panel-body">
     <p>The request page is not found.</p>
-
+   
   </div>
 </div>
     

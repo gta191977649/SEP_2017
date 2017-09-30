@@ -10,9 +10,16 @@
     <div class="am-cf am-padding am-padding-bottom-0">
         <div class="am-btn-toolbar">
             @if(Auth::user()->type() =="Customer")
-            
+                @if($order->state != $orderStatus::ORDER_INDELIVER)
+  
+                <div class="am-alert am-alert-secondary" data-am-alert>
+                <button type="button" class="am-close">&times;</button>
+                    Note: to complete your order, you have to wait until you recieved your food.
+                </div>
+                @endif
                 <a href="{{ route('ucp.order.state',['orderid' => $order->id , 'state' => $orderStatus::ORDER_FINISHED]) }}" class="am-btn am-btn-success am-radius" {{ $order->state == $orderStatus::ORDER_INDELIVER ? "" : "disabled"}}><span class="am-icon-check"></span> Complete</a>
-                <a href="{{ route('ucp.order.state',['orderid' => $order->id , 'state' => $orderStatus::ORDER_CANCELED]) }}" class="am-btn am-btn-danger am-radius" {{ $order->state == $orderStatus::ORDER_CANCELED || $order->state == $orderStatus::ORDER_CANCELEDBYSELLER || $order->state == $orderStatus::ORDER_FINISHED ? "disabled" : ""}}><span class="am-icon-trash-o"></span> Cancel</a>
+                
+            {{-- <a href="{{ route('ucp.order.state',['orderid' => $order->id , 'state' => $orderStatus::ORDER_CANCELED]) }}" class="am-btn am-btn-danger am-radius" {{ $order->state == $orderStatus::ORDER_CANCELED || $order->state == $orderStatus::ORDER_CANCELEDBYSELLER || $order->state == $orderStatus::ORDER_FINISHED ? "disabled" : ""}}><span class="am-icon-trash-o"></span> Cancel</a> --}}
            
             @else
             

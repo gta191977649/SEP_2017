@@ -25,7 +25,7 @@
                                         <a class="am-badge am-badge-success am-radius">New!</a>
                                     @endif
                                 </td>
-                                <td>{{ $msg->body }}</td>
+                                <td>{{ substr($msg->body , 0 , 25) }} ...</td>
                                 <td class="am-hide-sm-only">{{ $msg->sender->name }}</td>
                                
                                 <td class="am-hide-sm-only">{{ $msg->created_at }}</td>

@@ -5,13 +5,26 @@
    <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">Home</strong></div>
 </div>
 <hr/>
-<ul class="am-avg-sm-1 am-avg-md-2 am-margin am-padding am-text-center admin-content-list ">
-   <li><a href="#" class="am-text-success"><span class="am-icon-btn am-icon-file-text"></span><br/>Orders<br/>0</a></li>
-   <li><a href="#" class="am-text-warning"><span class="am-icon-btn am-icon-briefcase"></span><br/>User Type<br/>{{ Auth::user()->type() }}</a></li>
+<ul class="am-avg-sm-1 am-avg-md-4 am-margin am-padding am-text-center admin-content-list ">
+    <li><a href="#" class="am-text-success"><span class="am-icon-btn am-success am-icon-file-text"></span><br/>Orders<br/>{{ Auth::user()->orders->count() }}</a></li>
+    <li><a href="#" class="am-text-warning"><span class="am-icon-btn am-warning am-icon-user"></span><br/>User Type<br/>{{ Auth::user()->type() }}</a></li>
+    <li><a href="#" class="am-text-danger"><span class="am-icon-btn am-danger am-icon-wpforms"></span><br/>Transactions<br/>{{ Auth::user()->transactions->count() }}</a></li>
+    <li><a href="#" class="am-text-primary"><span class="am-icon-btn am-primary am-icon-bell"></span><br/>Notifications<br/>{{ Auth::user()->notifications->count() }}</a></li>
+
 </ul>
 
+
 <div class="am-cf am-padding am-padding-bottom-0">
-   <table class="am-table am-table-bd am-table-striped admin-content-table">
+    @if(Auth::user()->transactions->count())
+    <div class="am-panel am-panel-default">
+        <div class="am-panel-hd ">
+            <h3 class="am-panel-title" data-am-collapse="{target: '#trans'}">
+                Recent Transactions <span class="am-icon-chevron-down am-fr" ></span>
+            </h3>
+        </div>
+        <div id="trans" class="am-panel-collapse am-collapse am-in">
+         <div class="am-panel-bd">
+      <table class="am-table am-table-bd am-table-striped admin-content-table">
       <thead>
          <tr>
             <th>Order ID</th>
@@ -21,8 +34,38 @@
             <th>Operation</th>
          </tr>
       </thead>
-      
-   </table>
+      <tbody>
+         @foreach(Auth::user()->transactions->take(5) as $trans)
+         <tr>
+            <td>{{$trans->id}}</td>
+            <td>{{$trans->shop_name}}</td>
+            <td>
+               {{$trans->shop_address}}
+            </td>
+            <td>
+               @if( Auth::user()->user_type == 1)
+               <span class="am-badge am-badge-success am-radius">+${{ $trans->transactionItems->Sum('dish_price') }}</span>
+               @else
+               <span class="am-badge am-badge-danger am-radius">-${{ $trans->transactionItems->Sum('dish_price') }}</span>
+               @endif
+            </td>
+            <td>
+               <div class="am-dropdown" data-am-dropdown>
+                  <button class="am-btn am-btn-default am-btn-xs am-dropdown-toggle" data-am-dropdown-toggle><span class="am-icon-cog"></span> <span class="am-icon-caret-down"></span></button>
+                  <ul class="am-dropdown-content">
+                     <li><a href="{{route("ucp.transaction.show", $trans->id)}}">View</a></li>
+                  </ul>
+               </div>
+            </td>
+         </tr>
+         @endforeach
+            </tbody>
+        </table>
+        </div>
+        </div>
+   </div>
+   @endif
+
    <div class="am-panel am-panel-default">
       <div class="am-panel-hd ">
          <h3 class="am-panel-title" data-am-collapse="{target: '#notify-1'}">

@@ -61,7 +61,7 @@
 	        </ul>
       	</li>
         <li>
-          <a id="mainSiteBtn" href="{{ route('index') }}"><span class="am-icon-home"></span>Main Site</a></li>
+          <a id="mainSiteBtn" href="{{ route('index') }}"><span class="am-icon-home"></span> Main Site</a></li>
         <li>
     
   </div>
@@ -78,7 +78,11 @@
           	<ul class="am-list am-collapse admin-sidebar-sub " id="collapse-nav">
 	            <li><a href="{{ route('ucp.index') }}" class="am-cf"><span class="am-icon-info"></span> General Info</a></li> 
 	            @if( Auth::user()->user_type == 0)
-                <li><a href="{{ route ('ucp.contact.index') }}" class="am-cf"><span class="am-icon-home"></span> Delivery Address</a></li> 
+                <li><a href="{{ route ('ucp.contact.index') }}" class="am-cf"><span class="am-icon-home"></span> Delivery Address
+                @if(Auth::user()->contacts->count())
+                <span class="am-badge am-badge-warning am-round">{{ Auth::user()->contacts->count() }}</span>
+              @endif
+                </a></li> 
 	        	  @endif
               {{-- M@lisa has done nothing!!! <li><a href="admin-user.html" class="am-cf"><span class="am-icon-paypal"></span> Payment Settings</a></li> --}}
 	        	
@@ -91,17 +95,34 @@
         <li>
           <a class="am-cf" data-am-collapse="{target: '#collapse-nav1'}"><span class="am-icon-archive"></span> Shops<span class="am-icon-angle-right am-fr am-margin-right"></span></a>
           	<ul class="am-list am-collapse admin-sidebar-sub " id="collapse-nav1">
-	            <li><a href="{{ route('ucp.shop.index') }}" class="am-cf"><span class="am-icon-archive"></span> My Shops</a></li> 
+	            <li><a href="{{ route('ucp.shop.index') }}" class="am-cf"><span class="am-icon-archive"></span> My Shops
+              @if(Auth::user()->shops->count())
+                <span class="am-badge am-badge-warning am-round">{{ Auth::user()->shops->count() }}</span>
+              @endif
+              </a></li> 
           	</ul>
         </li>
         @endif
         <!-- Order管理 -->  
         <li>
-          <a class="am-cf" data-am-collapse="{target: '#collapse-nav3'}"><span class="am-icon-shopping-cart"></span> Order<span class="am-icon-angle-right am-fr am-margin-right"></span></a>
+          <a class="am-cf" data-am-collapse="{target: '#collapse-nav3'}"><span class="am-icon-shopping-cart"></span> Order<span class="am-icon-angle-right am-fr am-margin-right"></span>
+            
+          </a>
           	<ul class="am-list am-collapse admin-sidebar-sub " id="collapse-nav3">
-              <li><a href="{{ route('order.cart') }}" class="am-cf"><span class="am-icon-shopping-cart"></span> View Shopping Cart</a></li> 
-	            <li><a href="{{ route('ucp.order.index') }}" class="am-cf"><span class="am-icon-list"></span>{{Auth::user()->type() =="Customer" ? " View Orders" : " Order Management" }}</a></li> 
-          	</ul>
+              @if( Auth::user()->user_type == 0)
+              <li><a href="{{ route('order.cart') }}" class="am-cf"><span class="am-icon-shopping-cart"></span> View Shopping Cart
+              @if(Auth::user()->orders->where("state",NULL)->count())
+                  <span class="am-badge am-badge-warning am-round"> {{ Auth::user()->orders->where("state",NULL)->count() }} </span>
+              @endif
+              </a></li> 
+              @endif
+	            <li><a href="{{ route('ucp.order.index') }}" class="am-cf"><span class="am-icon-list"></span>{{Auth::user()->type() =="Customer" ? " View Orders" : " Order Management" }}@if(Auth::user()->orders->count())
+              <span class="am-badge am-badge-warning am-round">{{ Auth::user()->orders->count() }}</span>
+            @endif</a></li> 
+          	  @if( Auth::user()->user_type == 1) 
+              <li><a  href="{{ route('ucp.transaction.index') }}" class="am-cf"><span class="am-icon-list"></span> View Transactions</a></li> 
+              @endif
+            </ul>
         </li>
         
         
@@ -110,7 +131,11 @@
           <a class="am-cf" data-am-collapse="{target: '#collapse-nav2'}"><span class="am-icon-shopping-cart"></span> Transaction<span class="am-icon-angle-right am-fr am-margin-right"></span></a>
           	<ul class="am-list am-collapse admin-sidebar-sub " id="collapse-nav2">
               
-	            <li><a href="" class="am-cf"><span class="am-icon-list"></span> View Transactions</a></li> 
+	            <li><a  href="{{ route('ucp.transaction.index') }}" class="am-cf"><span class="am-icon-list"></span> View Transactions
+              @if(Auth::user()->transactions->count())
+                <span class="am-badge am-badge-warning am-round">{{ Auth::user()->transactions->count() }}</span>
+              @endif
+              </a></li> 
           	</ul>
         </li>
         @endif

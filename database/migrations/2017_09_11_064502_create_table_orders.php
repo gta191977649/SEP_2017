@@ -19,7 +19,8 @@ class CreateTableOrders extends Migration
             $table->integer('user_id')->unsigned();
             $table->integer('shop_id')->unsigned();
             $table->text('delivery_address')->nullable();
-            $table->string('delivery_contact')->nullable();//这里是收货人名字和电话号
+            $table->string('delivery_contact')->nullable();//这里是收货人名字
+            $table->string('customer_phone')->nullable();//电话号
             $table->text('note')->nullable();
             $table->integer('state')->nullable();
             $table->timestamps();
