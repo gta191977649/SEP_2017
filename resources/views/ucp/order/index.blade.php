@@ -14,7 +14,7 @@
 							<th>Order ID</th>
                             <th>Customer Name</th>
                             <th>Shop Name</th>
-                            <th>Shop Contact</th>
+                            <th>Shop Address</th>
                             <th>Create Date</th>
                             {{--<th>view</th>--}}
                             <th>State</th>
@@ -25,9 +25,9 @@
 						@foreach($orders as $order)
 						<tr>
 							<td>{{ $order->id }}</td>
-							<td><a href="{{ route("ucp.order.show", $order->id) }}">{{ $order->shop->shop_name }}</a></td>
-							<td>{{ $order->delivery_address }}</td>
-							<td class="am-hide-sm-only">{{ $order->delivery_contact }}</td>
+							<td><a href="{{ route("ucp.order.show", $order->id) }}">{{ $order->delivery_contact }}</a></td>
+							<td>{{ $order->shop->shop_name }}</td>
+							<td class="am-hide-sm-only">{{ $order->delivery_address }}</td>
 							<td class="am-hide-sm-only">{{ $order->created_at }}</td>
 							<td>
 								@if($order->state == $orderStatus::ORDER_COMFIRMED)
