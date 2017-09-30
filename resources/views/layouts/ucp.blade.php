@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Amaze UI Admin index Examples</title>
+  <title>SFO User Control Panel</title>
   <meta name="description" content="Index">
   <meta name="keywords" content="index">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -163,7 +163,7 @@
 
     <footer class="admin-content-footer">
       <hr>
-      <p class="am-padding-left"> SEP Project 2017</p>
+      <p class="am-padding-left">&copy SEP (Group 06, WorkShop 05) Assignment Project 2017 </p>
     </footer>
   </div>
   <!-- content end -->

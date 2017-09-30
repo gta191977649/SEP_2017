@@ -191,6 +191,8 @@
                 </div>
 
             </div>
+            <br/><br/><br/>
+            <p class="text-center">&copy SEP (Group 06, WorkShop 05) Assignment Project 2017<p>
     </footer>
 
 </body>
