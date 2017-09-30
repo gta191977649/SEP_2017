@@ -15,12 +15,7 @@
   <meta name="apple-mobile-web-app-title" content="UCP" />
   <link rel="stylesheet" href="{{ asset('UCP/css/amazeui.min.css') }}"/>
   <link rel="stylesheet" href="{{ asset('UCP/css/admin.css') }}">
-  <style>
-    .am-btn-toolbar a {
-        background-color: white;
-    }
 
-  </style>
     <!--[if lt IE 9]>
   <script src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>
   <script src="http://cdn.staticfile.org/modernizr/2.8.3/modernizr.js"></script>
@@ -56,7 +51,7 @@
 	        </a>
 	        <ul class="am-dropdown-content">
 	          	<li><a href="{{ route('ucp.contact.index') }}"><span class="am-icon-user"></span> Settings</a></li>
-	          	<li><a href="{{ route('index') }}"><span class="am-icon-cog"></span> Main Site</a></li>
+	          	<li><a href="{{ route('index') }}"><span class="am-icon-home"></span> Main Site</a></li>
 	          	<li>
               <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><span class="am-icon-power-off"></span> Logout</a>
               </li>
@@ -65,6 +60,9 @@
               </form>
 	        </ul>
       	</li>
+        <li>
+          <a id="mainSiteBtn" href="{{ route('index') }}"><span class="am-icon-home"></span>Main Site</a></li>
+        <li>
     
   </div>
 </header>
@@ -87,7 +85,7 @@
           	</ul>
         </li>
 
-        
+      
         @if( Auth::user()->user_type == 1)
         <!-- Shop管理页面 -->
         <li>
@@ -96,20 +94,22 @@
 	            <li><a href="{{ route('ucp.shop.index') }}" class="am-cf"><span class="am-icon-archive"></span> My Shops</a></li> 
           	</ul>
         </li>
+        @endif
         <!-- Order管理 -->  
         <li>
-          <a class="am-cf" data-am-collapse="{target: '#collapse-nav3'}"><span class="am-icon-shopping-cart"></span> Order Management<span class="am-icon-angle-right am-fr am-margin-right"></span></a>
+          <a class="am-cf" data-am-collapse="{target: '#collapse-nav3'}"><span class="am-icon-shopping-cart"></span> Order<span class="am-icon-angle-right am-fr am-margin-right"></span></a>
           	<ul class="am-list am-collapse admin-sidebar-sub " id="collapse-nav3">
-	            <li><a href="" class="am-cf"><span class="am-icon-list"></span> View Orders</a></li> 
+              <li><a href="{{ route('order.cart') }}" class="am-cf"><span class="am-icon-shopping-cart"></span> View Shopping Cart</a></li> 
+	            <li><a href="{{ route('ucp.order.index') }}" class="am-cf"><span class="am-icon-list"></span>{{Auth::user()->type() =="Customer" ? " View Orders" : " Order Management" }}</a></li> 
           	</ul>
         </li>
-        @endif
+        
         
         @if( Auth::user()->user_type == 0)
         <li>
           <a class="am-cf" data-am-collapse="{target: '#collapse-nav2'}"><span class="am-icon-shopping-cart"></span> Transaction<span class="am-icon-angle-right am-fr am-margin-right"></span></a>
           	<ul class="am-list am-collapse admin-sidebar-sub " id="collapse-nav2">
-              <li><a href="{{ route('order.cart') }}" class="am-cf"><span class="am-icon-shopping-cart"></span> View Shopping Cart</a></li> 
+              
 	            <li><a href="" class="am-cf"><span class="am-icon-list"></span> View Transactions</a></li> 
           	</ul>
         </li>

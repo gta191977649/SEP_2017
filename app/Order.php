@@ -6,7 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 use DB;
 class Order extends Model
 {
-    //
+    protected $fillable = [
+        'delivery_contact', 'delivery_address', 'shop_id','note','state'
+    ];
+
     public function user()
     {
         return $this->belongsTo('App\User');
@@ -24,4 +27,5 @@ class Order extends Model
     {
         return $this->hasMany('App\OrderItem')->select('*',DB::raw('count(*) as qty'))->groupBy('dish_id','shop_id');
     }
+    
 }

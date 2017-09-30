@@ -1,9 +1,10 @@
-@extends('layouts/base')
+@extends('layouts.ucp')
 @section('body')
     <h1>Comfirm</h1>
     </hr>
-    <div class="table-responsive">
-    <table class="table table-striped">
+        <div class="am-g">
+            <div class="am-u-sm-12">
+                <table class="am-table am-table-striped am-table-hover table-main">
         <thead>
             <tr>
                 <th>Item</th>
@@ -41,12 +42,13 @@
             </tbody>
         </table>
     </div>
+    </div>
 
-    <!-- 选择送货地址 -->
-    <form action="{{ route('order.store', $order->id ) }}" method="POST">
+
+     
     {{csrf_field()}}
     @if($contacts->count())
-    <table class="table table-striped">
+    <table class="am-table table table-striped  am-table-hover table-main">
         <thead>
             <tr>
                 {{--<th class="table-id">ID</th>--}}
@@ -54,7 +56,7 @@
                 <th>Address</th>
                 <th>ZipCode</th>
                 <th>Phone</th>
-                <th>Use this address</th>
+                
             </tr>
             </thead>
 
@@ -69,12 +71,7 @@
                    
                     <td>
                      
-                        @if( $contact->cont_isdefault )
-                            <input type="radio" name="selected_address" value="{{ $contact->id }}" checked>
-                        @else
-                            
-                            <input type="radio" name="selected_address"  value="{{ $contact->id }}">
-                        @endif
+      
                        
                     </td>
                 
@@ -85,26 +82,33 @@
             </tbody>
         </thead>
     </table>
-    <h3>Addtional Note</h3>
+    <h3>Addtional Note</h3> 
     </hr>
     <div class="form-group">
-        <textarea class="form-control" name="note" rows="7" cols="50" placeholder="Any addition note?"></textarea>
+         {{$order->note}}
     </div>
-    <button type="submit" class="btn btn-success pull-right" ><span class="glyphicon glyphicon-ok"></span> Confirm </button>
+    <br>
+        <form action="{{route("ucp.order.edit", $order->id)}}" class="pull-xs-right5 card-link" method="POST" style="display:inline">
+                    {{csrf_field()}}
+            <select name="status" id="status">
+        <!--    <option value="0" @if($order->status==0) selected="selected" @endif >   <span class="am-badge am-badge-primary">order submit</span></option>-->
+            @if(Auth::user()->id==$order->user_id)
+                <option value="2" @if($order->status==2) selected="selected" @endif >Completed</option>
+                <option value="4" @if($order->status==4) selected="selected" @endif >Canceled</span></option> 
+            @else
+                 <option value="1" @if($order->status==1) selected="selected" @endif >Comfirmed</option>
+                 <option value="3" @if($order->status==3) selected="selected" @endif >On Delivery</option>
+            @endif
+    
+            </select>
+                <button class="am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only" type="submit">submit</button>
+        </form>
     @else
-        <br/>
-        <div class="panel panel-danger">
-        <div class="panel-heading">Error</div>
-        <div class="panel-body">
-            <p>To process the transaction, you need to have at least 1 contact detail created in your accout. </p>
-            <p><a href="{{ route('ucp.contact.index') }}">Click here</a> to create a new contact.</p>
-        </div>
-        </div>
-        <!-- 无数据的时候提示 -->
-        <button type="submit" class="btn btn-success pull-right" disabled><span class="glyphicon glyphicon-ok"></span> Confirm </button>
+        
+       
     @endif
 
         
-    </form>
+    
 
 @endsection

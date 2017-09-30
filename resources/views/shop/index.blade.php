@@ -119,12 +119,10 @@
                 <h4>Phone: {{ $Shop->shop_phone }}</h4>
                 </h4>
                 
-                <div id="map" style="height: 500px;">saw</div>
+                <div id="map" style="height: 500px;"></div>
                 <!-- Google Map(估计代码很坑，因为是JS) -->
                 
-                <script>
-                
-                </script>
+            
                 <script  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDCAHMEsT8SxFopteetKsuwQjUbpUBtjj4&callback=initMap"></script>
                 
                
@@ -138,6 +136,7 @@
     <script>
     $('#Contact').click(function (e) {
         e.preventDefault();
+        
         //绘制Canvas
         var marker =null;
         var map = null;
