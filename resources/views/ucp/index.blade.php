@@ -13,8 +13,105 @@
 
 </ul>
 
+@if(Auth::user()->transactions->count())
+<div class="am-g">
+<div class="am-u-md-6">
+
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
+   <div class="am-panel am-panel-default">
+      <div class="am-panel-hd">Most visited restaurants</div>
+      <div class="am-panel-bd">
+         <canvas id="myChart" height="100%"></canvas>
+      </div>
+   </div>
+</div>
+<script>
+   var ctx = document.getElementById("myChart").getContext('2d');
+   var myChart = new Chart(ctx, {
+       type: 'bar',
+       data: {
+           labels: [
+               @foreach (DB::table('transactions')->where('user_id',Auth::user()->id)->groupBy('shop_name')->distinct()->get() as $trans)
+                   "{{ $trans->shop_name}}",
+               @endforeach
+            ],
+           datasets: [{
+               label: '# Order times',
+               data: [
+                   @foreach (Auth::user()->transactions->groupBy("shop_name") as $trans)
+                       {{ $trans->count()  }},
+                   @endforeach
+               ],
+               backgroundColor: 'rgba(94, 185, 94, 0.2)',
+   
+               borderColor: 'rgba(94,185,94,1)',
+    
+             
+               borderWidth: 1
+           }]
+       },
+       options: {
+           scales: {
+               yAxes: [{
+                   ticks: {
+                       beginAtZero:true
+                   }
+               }]
+           }
+       }
+   });
+</script>
+<div class="am-u-md-6">
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
+   <div class="am-panel am-panel-default">
+      <div class="am-panel-hd">Transactions</div>
+      <div class="am-panel-bd">
+         <canvas id="myChart2" height="100%"></canvas>
+      </div>
+   </div>
+</div>
+<script>
+   var ctx = document.getElementById("myChart2").getContext('2d');
+   var myChart = new Chart(ctx, {
+       type: 'line',
+       data: {
+           labels: [
+               @foreach (Auth::user()->transactions as $trans)
+                   "{{ $trans->created_at }}",
+               @endforeach
+            ],
+           datasets: [{
+               label: ' $',
+               data: [
+                   @foreach (Auth::user()->transactions as $trans)
+                   {{ $trans->transactionItems->Sum('dish_price')  }},
+                   @endforeach
+               ],
+               backgroundColor: 'rgba(243, 123, 29, 0.2)',
+               
+               borderColor: 'rgba(243, 123, 29, 1)',
+               
+               borderWidth: 1
+           }]
+       },
+       options: {
+           scales: {
+               yAxes: [{
+                   ticks: {
+                       beginAtZero:true
+                   }
+               }]
+           }
+       }
+   });
+</script>
+</div>
+@endif
+
 
 <div class="am-cf am-padding am-padding-bottom-0">
+    
+
     @if(Auth::user()->transactions->count())
     <div class="am-panel am-panel-default">
         <div class="am-panel-hd ">
