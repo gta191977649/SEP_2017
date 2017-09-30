@@ -7,7 +7,7 @@ use DB;
 class Order extends Model
 {
     protected $fillable = [
-        'delivery_contact', 'delivery_address', 'shop_id','note','state'
+        'delivery_contact', 'delivery_address', 'shop_id','note','state','customer_phone'
     ];
 
     public function user()

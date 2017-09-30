@@ -9,7 +9,7 @@ use App\OrderItem;
 use App\Contact;
 use DB;
 use App\OrderState;
-
+use App\Notification;
 
 class OrderController extends Controller
 {
@@ -57,9 +57,20 @@ class OrderController extends Controller
         $order->update([
             "delivery_address" => $con->cont_street_number.", ".$con->cont_street.", ".$con->cont_state.", ".$con->cont_zipcode,
             "delivery_contact" => $con->cont_firstname." ".$con->cont_lastname,
+            "customer_phone" => $con->cont_phone,
             "note" => $request->note,
             "state" => OrderState::ORDER_COMFIRMED
         ]);
+        //最后创建私信给通知店家
+
+        $notify = Notification::create([
+            'receiver_id' => $order->shop->user_id,
+            'sender_id' => Auth::user()->id,
+            'title' => 'You have a new order from '.Auth::user()->name,
+            'body' => 'You got a new order, please check in your order management,new order id: '.$orderId
+        ]);
+        $notify->save();
+
         //return $order;
         return view('order.secuess');
     }
@@ -79,7 +90,7 @@ class OrderController extends Controller
         $orderItem  = new Orderitem();
         $orderItem->dish_id=$dishId;
         $orderItem->shop_id=$shopId;
-        $orderItem->order_id= $order->id;
+        $orderItem->order_id = $order->id;
         $orderItem->save();
     
         //return redirect('/cart');

@@ -41,7 +41,14 @@ Route::group(['middleware'=>'auth'],function(){
     ]);
     
     Route::get('ucp/order/{id}/state/{state}','OrderAdminController@state')->name('ucp.order.state');
+
+    //Transaction
+    Route::get('transaction/{orderid}','TransactionController@create')->name('transaction.create');
     
+    Route::resource('ucp/transaction','TransactionAdminController',[
+        'as' => 'ucp'
+    ]);
+
 
     Route::get('ucp/test','UcpController@index');
     Route::get('ucp/index','UcpController@index')->name('ucp.index');
@@ -76,3 +83,13 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/search','SearchController@all')->name('search.all');
+
+Route::get('/0xFF',function(Request $request){
+    $request->session()->put('style', 'behind_scene');
+    return view('index');
+});
+
+Route::get('/0x00',function(Request $request){
+    $request->session()->forget('style');
+    return view('index');
+});
