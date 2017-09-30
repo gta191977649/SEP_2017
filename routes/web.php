@@ -19,25 +19,34 @@ Route::get('/', function () {
 //限制UCP必须要用户登录后才能使用
 Route::group(['middleware'=>'auth'],function(){
 
-    //添加UCP自动命名前缀
-   
+    
+    //DISH
     Route::resource('ucp/shop.dish','DishAdminController',[
         'as' => 'ucp'
     ]);
+    //Contact
     Route::resource('ucp/contact','ContactAdminController',[
         'as' => 'ucp'
     ]);
     Route::post('ucp/contact/{id}/default','ContactAdminController@default')->name('ucp.contact.default');
     
-
+    //SHOP
     Route::resource('ucp/shop','ShopAdminController',[
         'as' => 'ucp'
     ]);
 
+    //ORDER
+    Route::resource('ucp/order','OrderAdminController',[
+        'as' => 'ucp'
+    ]);
+    
+    Route::get('ucp/order/{id}/state/{state}','OrderAdminController@state')->name('ucp.order.state');
+    
+
     Route::get('ucp/test','UcpController@index');
     Route::get('ucp/index','UcpController@index')->name('ucp.index');
 
-    //消息
+   
     Route::get('ucp/notify/','NotificationController@index')->name('ucp.notify.index');
     Route::get('ucp/notify/{id}','NotificationController@view')->name('ucp.notify.view');
     Route::get('ucp/notify/{id}/mark','NotificationController@markRead')->name('ucp.notify.mark');
@@ -54,8 +63,8 @@ Route::group(['middleware'=>'auth'],function(){
 Route::post('order/add/{shopId}/{dishId}','OrderController@addItem')->name('order.add');
 Route::get('order/remove/{id}', 'OrderController@removeItem')->name('order.remove');
 Route::get('order/cart', 'OrderController@showCart')->name('order.cart');
-
 Route::post('order/comfirm/{id}', 'OrderController@comfirm')->name('order.comfirm');
+Route::post('order/store/{id}', 'OrderController@storeOrder')->name('order.store');
 
 
 Route::resource('shop','ShopController');

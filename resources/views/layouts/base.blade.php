@@ -108,8 +108,8 @@
                                 <li><a href="{{ route('order.cart') }}">
                                 <span class="glyphicon glyphicon-shopping-cart"></span>
                                 Shopping Cart 
-                                @if(Auth::user()->orders->count())
-                                    <span class="badge"> {{ Auth::user()->orders->count() }} </span>
+                                @if(Auth::user()->orders->where("state",NULL)->count())
+                                    <span class="badge"> {{ Auth::user()->orders->where("state",NULL)->count() }} </span>
                                 @endif
                                 </a></li>
                         @endif
