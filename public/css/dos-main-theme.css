@@ -110,6 +110,9 @@ html {
     color: inherit;
     font: inherit;
     margin: 0;
+    -webkit-box-shadow: 10px 10px 0px 0px rgba(0,0,0,1);
+    -moz-box-shadow: 10px 10px 0px 0px rgba(0,0,0,1);
+    box-shadow: 10px 10px 0px 0px rgba(0,0,0,1);
   }
   button {
     overflow: visible;
@@ -135,6 +138,9 @@ html {
   }
   input {
     line-height: normal;
+    -webkit-box-shadow: 10px 10px 0px 0px rgba(0,0,0,1);
+    -moz-box-shadow: 10px 10px 0px 0px rgba(0,0,0,1);
+    box-shadow: 10px 10px 0px 0px rgba(0,0,0,1);
   }
   input[type="checkbox"],
   input[type="radio"] {
@@ -4991,6 +4997,12 @@ html {
     color: #000000;
     margin-bottom: 19px;
     background-color: #bbbbbb;
+    -webkit-box-shadow: 10px 10px 0px 0px rgba(0,0,0,1);
+    -moz-box-shadow: 10px 10px 0px 0px rgba(0,0,0,1);
+    box-shadow: 10px 10px 0px 0px rgba(0,0,0,1);
+  }
+  .panel-body h1,.panel-body h4{
+    color: #000000;
   }
   .panel-body {
     padding: 0 4px 0 6px;
