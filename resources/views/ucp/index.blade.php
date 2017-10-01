@@ -6,10 +6,10 @@
 </div>
 <hr/>
 <ul class="am-avg-sm-1 am-avg-md-4 am-margin am-padding am-text-center admin-content-list ">
-    <li><a href="#" class="am-text-success"><span class="am-icon-btn am-success am-icon-file-text"></span><br/>Orders<br/>{{ Auth::user()->orders->count() }}</a></li>
+    <li><a href="{{ route('ucp.order.index') }}" class="am-text-success"><span class="am-icon-btn am-success am-icon-file-text"></span><br/>Orders<br/>{{ Auth::user()->orders->count() }}</a></li>
     <li><a href="#" class="am-text-warning"><span class="am-icon-btn am-warning am-icon-user"></span><br/>User Type<br/>{{ Auth::user()->type() }}</a></li>
-    <li><a href="#" class="am-text-danger"><span class="am-icon-btn am-danger am-icon-wpforms"></span><br/>Transactions<br/>{{ Auth::user()->transactions->count() }}</a></li>
-    <li><a href="#" class="am-text-primary"><span class="am-icon-btn am-primary am-icon-bell"></span><br/>Notifications<br/>{{ Auth::user()->notifications->count() }}</a></li>
+    <li><a href="{{ route('ucp.transaction.index') }}" class="am-text-danger"><span class="am-icon-btn am-danger am-icon-wpforms"></span><br/>Transactions<br/>{{ Auth::user()->transactions->count() }}</a></li>
+    <li><a href="{{ route('ucp.notify.index') }}" class="am-text-primary"><span class="am-icon-btn am-primary am-icon-bell"></span><br/>Notifications<br/>{{ Auth::user()->notifications->count() }}</a></li>
 
 </ul>
 
