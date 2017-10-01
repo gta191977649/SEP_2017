@@ -1,6 +1,7 @@
 @extends('layouts/base')
-@section('body')
-
+@section('main')
+<div class="container-fluid" id="searchBk" style="margin-top: -20px;">
+<div class="container">
     <div class="alert alert-info alert-dismissible" role="alert">
         <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         Find: {{ $keyword }} on {{$result_shop->count()+$result_dish->count()}} results.
@@ -76,5 +77,6 @@
     @endif
     </div>
     </div>
-    
+</div>
+</div>
 @endsection

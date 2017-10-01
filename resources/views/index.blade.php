@@ -4,9 +4,6 @@
 
 
 <div class="container-fluid" id="bk" style="margin-top: -20px;">
-
-
-
 <div class="container">
 
 <div class="row">
@@ -16,12 +13,12 @@
         <form id="form_banner" action="{{ route('search.all') }}" post="get" style="margin-top: 50px; margin-left: 20px; margin-right: 20px; " id="form_banner">
             <div class="row">
                 <div class="col-md-2" style="margin: 0px; padding: 0px; margin-top: 5px;">
-                    <select class="form-control">
-                        <option>Hurstville</option>
-                        <option>Rockdale</option>
-                        <option>City</option>
-                    </select>
+                    <a id="noshadow"class="form-control" data-toggle="collapse" data-target="#demo">
+                        Location
+                        <span class="glyphicon glyphicon-arrow-down" aria-hidden="true"></span>
+                    </a>
                 </div>
+                
                 <div class="col-md-8" style="margin: 0px; padding: 0px; margin-top: 5px;">
                     <input name="keyword" class="form-control" placeholder="Search any food / shop you want"/>
                 </div>
@@ -30,10 +27,62 @@
  Search</button>
                 </div>
             </div>
-
+            
+            
         </form>
     
-
+        <div id="demo" class="collapse" style="padding-top:10px;">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                <div class="row">
+                    <div class="col-lg-2">
+                        Hurstvile
+                    </div>
+                    <div class="col-lg-2">
+                        Allawah
+                    </div>
+                    <div class="col-lg-2">
+                        Carlton
+                    </div>
+                    <div class="col-lg-2">
+                        Kogarah
+                    </div>
+                    <div class="col-lg-2">
+                        Rockdale
+                    </div>
+                    <div class="col-lg-2">
+                        Banksia
+                    </div>
+                    <div class="col-lg-2">
+                        Arnicliffe
+                    </div>
+                    <div class="col-lg-2">
+                        Wolli creek
+                    </div>
+                    <div class="col-lg-2">
+                        Temp
+                    </div>
+                    <div class="col-lg-2">
+                        Sydenham
+                    </div>
+                    <div class="col-lg-2">
+                    Redren
+                    </div>
+                </div>
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                </div>
+            </div>
+        </div>
 
         <div class="text-center" style="margin-top: 100px; " >
             <h1 class="cover-heading"  style="color:white; font-weight:bold;">Join US</h1>

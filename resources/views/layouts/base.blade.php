@@ -113,7 +113,15 @@
                                 @endif
                                 </a></li>
                         @endif
-    
+                        @if( Auth::user()->user_type != 1)
+                                <li><a href="{{ route('ucp.order.index') }}">
+                                <span class="glyphicon glyphicon-shopping-cart"></span>
+                                My orders
+                                @if(Auth::user()->orders->where("state",NULL)->count())
+                                    <span class="badge"> {{ Auth::user()->orders->where("state",NULL)->count() }} </span>
+                                @endif
+                                </a></li>
+                        @endif
                          
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">

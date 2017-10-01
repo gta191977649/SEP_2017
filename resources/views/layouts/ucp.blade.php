@@ -51,7 +51,6 @@
 	        </a>
 	        <ul class="am-dropdown-content">
 	          	<li><a href="{{ route('ucp.contact.index') }}"><span class="am-icon-user"></span> Settings</a></li>
-	          	<li><a href="{{ route('index') }}"><span class="am-icon-home"></span> Main Site</a></li>
 	          	<li>
               <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><span class="am-icon-power-off"></span> Logout</a>
               </li>
