@@ -29,7 +29,7 @@
         <h1>Shop <small>({{ $result_shop->count() }})</small></h1>
         <hr/>
         <div class="row">
-            @foreach ($result_shop as $shops)
+            @foreach ($result_shop as   $shops)
                 <div class="col-md-3">
                     <div class="thumbnail">
                         <a href="{{ route('shop.show',$shops->id) }}" style="color:black;"><img src="{{ $shops->shop_pic }}" ></a>

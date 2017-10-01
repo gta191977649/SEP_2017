@@ -46,3 +46,6 @@ Route::post('order/comfirm/{id}', 'OrderController@comfirm')->name('order.comfir
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/search','SearchController@all')->name('search.all');
 Route::resource('shop','ShopController');
+
+//Test
+Route::get('/test1','HomeController@test');
