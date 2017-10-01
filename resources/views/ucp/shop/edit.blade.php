@@ -45,7 +45,7 @@
                             <div class="am-form-group am-form-file">
                                 <button type="button" class="am-btn am-btn-primary am-btn-sm">
                                     <i class="am-icon-cloud-upload"></i> Select file...</button>
-                                <input id="doc-form-file" type="file" name="shop_pic" value="{{$shop->shop_pic}}" accept="image/*">
+                                <input id="doc-form-file" type="file" name="shop_pic" accept="image/*">
                             </div>
                                 <div id="file-list"></div>
                                 <script>
@@ -61,7 +61,7 @@
                                 </script>
                             <div class = "form-group">
                                 <label for = "shop_des">Description</label>
-                                <input class="am-form-field am-radius" type = "text" name = "shop_des" value = "{{$shop->shop_des}}" required>
+                                <textarea class="am-form-field am-radius" type = "text" rows="5" name = "shop_des" required>{{$shop->shop_des}}</textarea>
                             </div>
   
                             {{--<input type = "hidden" name = "notebook_id" value = "{{$id}}"--}}

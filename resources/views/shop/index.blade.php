@@ -42,7 +42,7 @@
        
                 <!-- 菜品列表(每行2列) -->
                 <div class="row">
-                    @foreach( $Shop->dishs as $dish )
+                    @foreach( $Shop->dishs->where('avaible',1) as $dish )
                     
 
                         <div class="col-md-6"> 

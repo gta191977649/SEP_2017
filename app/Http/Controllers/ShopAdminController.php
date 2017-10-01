@@ -43,8 +43,10 @@ class ShopAdminController extends Controller
         $prefix = "/uploads/";
         $dataInput = $request->all();
 
-        
-        
+        $user = Auth::user();
+        $shop = $user->shops()->create($dataInput);
+
+                
         if($request->hasFile('shop_pic'))
         {
             $uploadFile = $request->file('shop_pic');
@@ -53,25 +55,11 @@ class ShopAdminController extends Controller
             $filename = $unique_name.".".$uploadFile->getClientOriginalExtension();
             $uploadFile->move('uploads', $filename);
 
-            $user = Auth::user();
-            $user->shops()->create([
-                'shop_name' => $request->shop_name,
+    
+            $shop->update([
                 'shop_pic' => $prefix.$filename,
-                'shop_des' => $request->shop_des, 
-                'shop_street_number' => $request->shop_street_number, 
-                'shop_street' => $request->shop_street, 
-                'shop_city' => $request->shop_city, 
-                'shop_state' => $request->shop_state, 
-                'shop_zipcode' => $request->shop_zipcode, 
-                'shop_country' => $request->shop_country,   
-                'shop_phone' => $request->shop_phone
-            ]);
-
-            return redirect('/ucp/shop');
+            ]); 
         }
-
-        $user = Auth::user();
-        $user->shops()->create($dataInput);
         return redirect('/ucp/shop');
     }
 
@@ -110,6 +98,10 @@ class ShopAdminController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $user = Auth::user();
+        $shop=$user->shops()->find($id);
+        $shop->update($request->all());
+
         if($request->hasFile('shop_pic'))
         {
             $prefix = "/uploads/";
@@ -120,19 +112,13 @@ class ShopAdminController extends Controller
             $uploadFile->move('uploads', $filename);
 
             $user = Auth::user();
-            $user->shops()->update([
-                'shop_name' => $request->shop_name,
+            $shop->update([
                 'shop_pic' => $prefix.$filename,
-                'shop_des' => $request->shop_des,   
-                'shop_phone' => $request->shop_phone
             ]);
 
-            return redirect('ucp/shop');
         }
 
-        $user = Auth::user();
-        $shop=$user->shops()->find($id);
-        $shop->update($request->all());
+ 
         return redirect('ucp/shop');
     }
 

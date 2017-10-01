@@ -53,7 +53,7 @@
                                 </script>
                            
                             <div class="am-form-group">
-                                <input class="am-form-field am-radius", placeholder="shop_des" name="shop_des" required> 
+                                <textarea class="am-form-field am-radius", placeholder="Description" rows="5" name="shop_des" required></textarea>
                             </div>
 
                         </div>
