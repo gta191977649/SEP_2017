@@ -1,7 +1,3 @@
-@extends('layouts/base')
-
-
-
 @extends('layouts.ucp')
 
 @section('body')
@@ -15,7 +11,7 @@
             <div class="am-panel am-panel-default">
                 <div class="am-panel-hd">Editing Dish</div>
                     <div class="am-panel-bd">
-                        <form class="am-form" action="{{route('ucp.shop.dish.update',['shop'=>$dish->shop_id,'dish'=>$dish->id])}}" method="POST" data-am-validator>
+                        <form class="am-form" action="{{route('ucp.shop.dish.update',['shop'=>$dish->shop_id,'dish'=>$dish->id])}}" method="POST" enctype="multipart/form-data" data-am-validator>
                             <fieldset>
                                 {{csrf_field()}}
                                 {{method_field('PUT')}}
@@ -23,10 +19,32 @@
                                 <div class="am-form-group">
                                     <input class="am-form-field am-radius" placeholder="Name" name="dishName" value = "{{$dish->dishName}}" required> 
                                 </div>
-                            
+                                {{--
                                 <div class="am-form-group">
                                     <input class="am-form-field am-radius" placeholder="dishPic" name="dishPic" value = "{{$dish->dishPic}}" required> 
                                 </div>
+                                --}}
+                                <p>
+                                    @if($dish->dishPic)<img src="{{$dish->dishPic}}"  class="am-img-thumbnail am-radius"  width="140" height="140"/>@endif
+                                </p>
+                                <div class="am-form-group am-form-file">
+                                    <button type="button" class="am-btn am-btn-primary am-btn-sm">
+                                        <i class="am-icon-cloud-upload"></i> Select file...</button>
+                                    <input id="doc-form-file" type="file" name="dishPic" value="{{$dish->dishPic}}" accept="image/*">
+                                </div>
+                                <div id="file-list"></div>
+                                <script>
+                                $(function() {
+                                    $('#doc-form-file').on('change', function() {
+                                    var fileNames = '';
+                                    $.each(this.files, function() {
+                                        fileNames += '<span class="am-badge">' + this.name + '</span> ';
+                                    });
+                                    $('#file-list').html(fileNames);
+                                    });
+                                });
+                                </script>
+
                                 <div class="am-form-group">
                                     <input class="am-form-field am-radius" type="number" placeholder="price" name="price" value = "{{$dish->price}}" required> 
                                 </div>
@@ -64,36 +82,4 @@
         });
     </script>
 @endsection
-
-    
-    {{--
-    <h1>Edit dish</h1>
-    <form action="{{route('ucp.shop.dish.update',['shop'=>$dish->shop_id,'dish'=>$dish->id])}}" method="POST">
-        {{csrf_field()}}
-        {{method_field('PUT')}}
-        <div class = "form-group">
-            <label for = "dishName">dish name</label>
-            <input class = "form-control" type = "text" name = "dishName" value = "{{$dish->dishName}}">
-        </div>
-        <div class="form-group">
-            <label for="dishPic">Pic test</label>
-            <input class="form-control" type="text" name="dishPic" value = "{{$dish->dishPic}}">
-        </div>
-        <div class = "form-group">
-            <label for = "price">price</label>
-            <input class = "form-control" type = "number" name = "price" value = "{{$dish->price}}">
-        </div>
-        <div class="form-group">
-            <label for="shop_id">shop id</label>
-            <input class="form-control" type="number" name="shop_id" value = "{{$dish->shop_id}}">
-        </div>
-        <div class="form-group">
-            <label for="avaible">ava</label>
-            <input class="form-control" type="number" name="avaible" value = "{{$dish->avaible}}">
-        </div>
-        
-        <input class = "btn btn-primary" type = "submit" value = "Done">
-        </input>
-    </form>
-    --}}
 

@@ -5,6 +5,19 @@
     <div class="alert alert-dismissible" id="alertCustom" role="alert">
         <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         Find: {{ $keyword }} on {{$result_shop->count()+$result_dish->count()}} results.
+        <p>
+        @if($req->area && $req->keyword) 
+        
+            <span class="badge">{{$req->area}}</span>
+            <span class="badge">{{$req->keyword}}</span>
+        
+        @elseif($req->area)
+        
+             <span class="badge">{{$req->area}}</span>
+        @else 
+            <span class="badge">{{$req->keyword}}</span>
+        @endif
+        </p>
     </div>
 
     <!-- seacrh -->
@@ -12,7 +25,7 @@
     
         <div class="row" style="padding: 15px;">
             <div class="col-md-2" style="margin: 0px; padding: 0px;">
-                <input href="#" id="noshadow"class="form-control" data-toggle="collapse" data-target="#demo" placeholder="Location" name="area"></input>     
+                <input href="#" id="noshadow"class="form-control" data-toggle="collapse" data-target="#demo" placeholder="Location" name="area" value="{{ $req->area ? $req->area : "" }}"></input>     
             </div>
             <div class="col-md-8" style="margin: 0px; padding: 0px;">
                 <input name="keyword" class="form-control" placeholder="Search any food / shop you want"/>

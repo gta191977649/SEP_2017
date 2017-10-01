@@ -10,16 +10,34 @@
             <div class="am-panel am-panel-default">
                 <div class="am-panel-hd">Dish information</div>
                     <div class="am-panel-bd">
-                        <form class="am-form" action="{{ route('ucp.shop.dish.store',$shop) }}" method="POST" data-am-validator>
+                        <form class="am-form" action="{{ route('ucp.shop.dish.store',$shop) }}" method="POST" enctype="multipart/form-data"  data-am-validator>
                             <fieldset>
                             {{ csrf_field() }}  
                                 <div class="am-form-group">
                                     <input class="am-form-field am-radius" placeholder="Name" name="dishName" required> 
                                 </div>
-                            
+                                {{--
                                 <div class="am-form-group">
                                     <input class="am-form-field am-radius" placeholder="dishPic" name="dishPic" required> 
                                 </div>
+                                --}}
+                                <div class="am-form-group am-form-file">
+                                <button type="button" class="am-btn am-btn-primary am-btn-sm">
+                                    <i class="am-icon-cloud-upload"></i> Select file...</button>
+                                <input id="doc-form-file" type="file" name="dishPic" accept="image/*">
+                                </div>
+                                    <div id="file-list"></div>
+                                    <script>
+                                    $(function() {
+                                        $('#doc-form-file').on('change', function() {
+                                        var fileNames = '';
+                                        $.each(this.files, function() {
+                                            fileNames += '<span class="am-badge">' + this.name + '</span> ';
+                                        });
+                                        $('#file-list').html(fileNames);
+                                        });
+                                    });
+                                </script>
                                 <div class="am-form-group">
                                     <input class="am-form-field am-radius" type="number" placeholder="price" name="price" required> 
                                 </div>
