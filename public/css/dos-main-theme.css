@@ -3773,6 +3773,7 @@ html {
   }
   .nav-tabs > li > a {
     line-height: 19px;
+    color: white;
   }
   .nav-tabs > li > a::first-letter {
     color: #ff5555;
