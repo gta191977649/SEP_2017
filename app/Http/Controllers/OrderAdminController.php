@@ -23,7 +23,7 @@ class OrderAdminController extends Controller
     public function index()
     {
 
-        Auth::user()->type() =="Customer" ? $orders = Auth::user()->orders : $orders = $this->findShopOrders();
+        Auth::user()->type() =="Customer" ? $orders = Auth::user()->orders->where('state','!=',NULL) : $orders = $this->findShopOrders();
         $orderStatus = new OrderState();
         return view('ucp.order.index',compact('orders','orderStatus'));
     }

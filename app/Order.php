@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+
 use DB;
 class Order extends Model
 {
@@ -27,5 +28,6 @@ class Order extends Model
     {
         return $this->hasMany('App\OrderItem')->select('*',DB::raw('count(*) as qty'))->groupBy('dish_id','shop_id');
     }
+
     
 }

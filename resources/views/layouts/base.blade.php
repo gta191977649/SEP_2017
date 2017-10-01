@@ -19,6 +19,7 @@
 
     <link href="{{ asset('css/login.css') }}" rel="stylesheet" type="text/css">
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
     <script src="{{ asset('js/bootstrap.js') }}"></script>
     <script src="https://cdn.rawgit.com/nnattawat/flip/master/dist/jquery.flip.min.js"></script>
@@ -27,6 +28,9 @@
     @if (Session::has('style'))
         <link href="{{ asset('css/dos-main-theme.css') }}" rel="stylesheet" type="text/css">
         <link href="{{ asset('css/dos.css') }}" rel="stylesheet" type="text/css"> 
+        <script src="{{ asset('js/jquery.fireworks.js') }}"></script>
+        <!-- Credit Effect -->
+        
     @else
         <link href="{{ asset('css/bootstrap-main-theme.css') }}" rel="stylesheet" type="text/css">
     @endif
@@ -115,11 +119,9 @@
                         @endif
                         @if( Auth::user()->user_type != 1)
                                 <li><a href="{{ route('ucp.order.index') }}">
-                                <span class="glyphicon glyphicon-shopping-cart"></span>
-                                My orders
-                                @if(Auth::user()->orders->where("state",NULL)->count())
-                                    <span class="badge"> {{ Auth::user()->orders->where("state",NULL)->count() }} </span>
-                                @endif
+                                <span class="glyphicon glyphicon-th-list"></span>
+                                View orders
+                               
                                 </a></li>
                         @endif
                          
@@ -200,9 +202,39 @@
 
             </div>
             <br/><br/><br/>
-            <p class="text-center">&copy SEP (Group 06, WorkShop 05) Assignment Project 2017<p>
+            @if (Session::has('style'))
+            <p class="text-center"><a  href="#" onclick="credit();">&copy SEP (Group 06, WorkShop 05) Assignment Project 2017</a><p>
+            <script>
+            $('.bs-example-modal-sm').on('show.bs.modal', function (e) {
+                 toogle = false;
+                 $('.container-fluid').fireworks();
+            })
+
+            $('.bs-example-modal-sm').on('hidden.bs.modal', function (e) {
+                 toogle = false;
+                 $('.container-fluid').fireworks('destroy');
+            })
+            var toogle = false;
+            function credit() {
+                //alert(toogle);
+                if(toogle == false){
+                    $('.container-fluid').fireworks(); 
+                    toogle = true;
+                }
+                else
+                {
+                    toogle = false;
+                    $('.container-fluid').fireworks('destroy');     
+                }  
+                     
+            };
+            </script>
+
+            @else
+            <p class="text-center" >&copy SEP (Group 06, WorkShop 05) Assignment Project 2017<p>
+            @endif
     </footer>
 
 </body>
-
+        
 </html>
