@@ -5,13 +5,29 @@
     <div class="alert alert-dismissible" id="alertCustom" role="alert">
         <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         Find: {{ $keyword }} on {{$result_shop->count()+$result_dish->count()}} results.
+        <p>
+        @if($req->area && $req->keyword) 
+        
+            <span class="badge">{{$req->area}}</span>
+            <span class="badge">{{$req->keyword}}</span>
+        
+        @elseif($req->area)
+        
+             <span class="badge">{{$req->area}}</span>
+        @else 
+            <span class="badge">{{$req->keyword}}</span>
+        @endif
+        </p>
     </div>
 
     <!-- seacrh -->
-    <form action="{{ route('search.all') }}" post="get">
+    <form action="{{ route('search') }}" post="get">
     
         <div class="row" style="padding: 15px;">
-            <div class="col-md-10" style="margin: 0px; padding: 0px;">
+            <div class="col-md-2" style="margin: 0px; padding: 0px;">
+                <input href="#" id="noshadow"class="form-control" data-toggle="collapse" data-target="#demo" placeholder="Location" name="area" value="{{ $req->area ? $req->area : "" }}"></input>     
+            </div>
+            <div class="col-md-8" style="margin: 0px; padding: 0px;">
                 <input name="keyword" class="form-control" placeholder="Search any food / shop you want"/>
             </div>
             <div class="col-md-2" style="margin: 0px; padding: 0px;">
@@ -20,7 +36,24 @@
             </div>
         </div>
     </form>
-    
+    <div id="demo" class="collapse" style="padding-top:10px;">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                <div class="row">
+                    @foreach(DB::table('shops')->groupBy('shop_city')->distinct()->get() as $city)
+                    
+                    <div class="col-md-2"><a href="#" id="loc-{{ $city->shop_city }}" onclick="myFunction_{{ $city->shop_city }}()" >{{$city->shop_city}}</a></div>
+                    <script>
+                    function myFunction_{{ $city->shop_city }}() {
+                        //alert(document.getElementById("loc-{{ $city->shop_city }}").innerHTML);
+                        document.getElementById("noshadow").value = document.getElementById("loc-{{ $city->shop_city }}").innerHTML;
+                    }
+                    </script>
+                    @endforeach
+                </div>   
+                </div>
+            </div>
+        </div>
 
 
     <div class="panel panel-default">

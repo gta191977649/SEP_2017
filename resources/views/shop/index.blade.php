@@ -47,7 +47,7 @@
 
                         <div class="col-md-6"> 
                             <div class="thumbnail">
-                                <img src="..." >
+                                
                                 <div class="caption">
                                     <div class="media">
                                     <div class="media-left">

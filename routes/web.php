@@ -82,7 +82,9 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/search','SearchController@all')->name('search.all');
+Route::get('/search','SearchController@search')->name('search');
+Route::get('/search/all','SearchController@all')->name('search.all');
+
 
 Route::get('/0xFF',function(Request $request){
     $request->session()->put('style', 'behind_scene');

@@ -40,7 +40,23 @@ class DishAdminController extends Controller
          $dishs = $request->all();
          //print_r($data);
          $Shop = Shop::find($shop_id);
-         $Shop->dishs()->create($dishs);
+         $dish = $Shop->dishs()->create($dishs);
+
+         if($request->hasFile('dishPic'))
+         {
+             $prefix = "/uploads/";
+             $uploadFile = $request->file('dishPic');
+             $unique_name = md5($uploadFile->getClientOriginalName().time());
+             $filename = $unique_name.".".$uploadFile->getClientOriginalExtension();
+             $uploadFile->move('uploads', $filename);
+ 
+             
+             $dish->update([
+                 'dishPic' => $prefix.$filename,
+             ]);
+             
+         }
+
          //Dish::create($dishs);
          //return
          //$shop_id = $request->shop_id;
@@ -96,6 +112,22 @@ class DishAdminController extends Controller
         //return  $Shop;
         $dish = $Shop->dishs()->find($dish_id);
         $dish->update($request->all());
+
+        if($request->hasFile('dishPic'))
+        {
+            $prefix = "/uploads/";
+            $uploadFile = $request->file('dishPic');
+            $unique_name = md5($uploadFile->getClientOriginalName().time());
+            $filename = $unique_name.".".$uploadFile->getClientOriginalExtension();
+            $uploadFile->move('uploads', $filename);
+
+            
+            $dish->update([
+                'dishPic' => $prefix.$filename,
+     
+            ]);
+            
+        }
          //return redirect()->route('shop.dish.show', compact('shop_id'));
         return redirect()->route('ucp.shop.show', compact('shop_id'));
          //return $request->all();
