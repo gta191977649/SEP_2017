@@ -49,9 +49,16 @@
                                 </div>
                                 <div class="am-form-group">
                                     <label class="am-checkbox-inline">
-                                    <input type="checkbox" name="avaible" value="0" checked> Avaiable
+                                    <input id="ck_avai" type="checkbox" name="avai" checked> Avaiable
                                     </label>
                                 </div>
+                                <input type="hidden" id="ck_cache" class="am-form-field am-radius" value="1" name="avaible" required> 
+                                <script>
+                                    $('#ck_avai').change(function () {
+                                        //alert(this.checked ? "YES" : "NO");
+                                        $("#ck_cache").val(this.checked ? 1 : 0);
+                                    });
+                                </script>
                                 <input class="am-btn am-btn-primary am-radius am-fr" type="submit" value ="Create">
                             </fieldset>
                         </form>

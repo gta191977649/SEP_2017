@@ -30,7 +30,7 @@
                                 <div class="am-form-group am-form-file">
                                     <button type="button" class="am-btn am-btn-primary am-btn-sm">
                                         <i class="am-icon-cloud-upload"></i> Select file...</button>
-                                    <input id="doc-form-file" type="file" name="dishPic" value="{{$dish->dishPic}}" accept="image/*">
+                                    <input id="doc-form-file" type="file" name="dishPic" accept="image/*">
                                 </div>
                                 <div id="file-list"></div>
                                 <script>
@@ -65,7 +65,7 @@
 
                                 <input type="hidden" id="ck_cache" class="am-form-field am-radius" value="{{$dish->avaible}}" name="avaible" required> 
 
-                                <input class="am-btn am-btn-primary am-radius am-fr" type="submit" value ="Create">
+                                <input class="am-btn am-btn-primary am-radius am-fr" type="submit" value ="Update">
                             </fieldset>
                         </form>
                     </div>
