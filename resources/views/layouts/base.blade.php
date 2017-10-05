@@ -31,6 +31,11 @@
         <link href="{{ asset('css/dos-main-theme.css') }}" rel="stylesheet" type="text/css">
         <link href="{{ asset('css/dos.css') }}" rel="stylesheet" type="text/css"> 
         <script src="{{ asset('js/jquery.fireworks.js') }}"></script>
+     
+        <script src="{{ asset('js/386.js') }}"></script>
+        
+        
+        
         <!-- Credit Effect -->
         
     @else
@@ -198,7 +203,7 @@
                         
                         <li><a href="/0x00">B {{ Session::has('style') ? "(Don't touch me!) =w=" : ""}}</a></li>
                        
-                        <li><a href="/0xFF">C {{ Session::has('style') ? "" : "(Nothing here)"}}</a></li>
+                        <li><a href="/0xFF">C {{ Session::has('style') ? "" : "(#)"}}</a></li>
                     </ul>
                 </div>
 

@@ -3,7 +3,7 @@
 <div class="container-fluid" id="searchBk" style="margin-top: -20px;">
 <div class="container">
     <div class="alert alert-dismissible" id="alertCustom" role="alert">
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
         Find: {{ $keyword }} on {{$result_shop->count()+$result_dish->count()}} results.
         <p>
         @if($req->area && $req->keyword) 
