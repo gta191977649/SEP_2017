@@ -16,8 +16,9 @@
              <span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span>
             --}}
             @if($Shop->feedbacks->count())
-                @for($i = 0;$i < 5; $i++)
-                    @if($i < $Shop->feedbacks->avg("rate"))
+           
+                @for($i= 1; $i < 6; $i++)
+                    @if($i <= $Shop->feedbacks->avg("rate"))
                         <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
                     @else
                         <span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span>
