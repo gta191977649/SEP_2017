@@ -13,6 +13,7 @@
 
 </ul>
 
+@if( Auth::user()->user_type == 0)
 @if(Auth::user()->transactions->count())
 <div class="am-g">
 <div class="am-u-md-6">
@@ -107,8 +108,66 @@
 </script>
 </div>
 @endif
+@else {{--  for shop owner --}}
+    @php
+        $user = Auth::user();
+        $transactions = collect();
+        foreach($user->shops as $userShop)
+        {
+            foreach($userShop->shopSales as $shopSale)
+            {
+                $transactions->push($shopSale->transaction);
+            } 
+        }
+    @endphp
 
+    <div class="am-cf am-padding am-padding-bottom-0">
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
+    <div class="am-panel am-panel-default">
+        <div class="am-panel-hd">Total turnover</div>
+        <div class="am-panel-bd">
+            <canvas id="chartShop" height="100%"></canvas>
+        </div>
+    </div>
+    </div>
+    <script>
+    var ctx = document.getElementById("chartShop").getContext('2d');
+    var myChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: [
+                @foreach ($transactions as $trans)
+                    "{{ $trans->created_at->format('d/M/y(H:i:s)') }}",
+                @endforeach
+                ],
+            datasets: [{
+                label: ' $',
+                data: [
+                    @foreach ($transactions as $trans)
+                    {{ $trans->transactionItems->Sum('dish_price')  }},
+                    @endforeach
+                ],
+                backgroundColor: 'rgba(94, 185, 94, 0.5)',
+                
+                borderColor: 'rgba(94, 185, 94,1)',
+                
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero:true
+                    }
+                }]
+            }
+        }
+    });
+    </script>   
+    </div> 
+@endif
 <div class="am-cf am-padding am-padding-bottom-0">
     
 
