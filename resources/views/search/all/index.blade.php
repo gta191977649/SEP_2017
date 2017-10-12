@@ -40,15 +40,21 @@
             <div class="panel panel-default">
                 <div class="panel-body">
                 <div class="row">
+                    @php
+                        $idx = 0;
+                    @endphp
                     @foreach(DB::table('shops')->groupBy('shop_city')->distinct()->get() as $city)
                     
-                    <div class="col-md-2"><a href="#" id="loc-{{ $city->shop_city }}" onclick="myFunction_{{ $city->shop_city }}()" >{{$city->shop_city}}</a></div>
+                    <div class="col-md-2"><a href="#" id="loc-{{ $idx }}" onclick="myFunction_{{ $idx }}()" >{{$city->shop_city}}</a></div>
                     <script>
-                    function myFunction_{{ $city->shop_city }}() {
+                    function myFunction_{{ $idx }}() {
                         //alert(document.getElementById("loc-{{ $city->shop_city }}").innerHTML);
-                        document.getElementById("noshadow").value = document.getElementById("loc-{{ $city->shop_city }}").innerHTML;
+                        document.getElementById("noshadow").value = document.getElementById("loc-{{ $idx }}").innerHTML;
                     }
                     </script>
+                    @php
+                        $idx++;
+                    @endphp
                     @endforeach
                 </div>   
                 </div>
