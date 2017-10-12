@@ -48,7 +48,11 @@
 <body>
 
     @if (Session::has('style'))
+        <div class="alert">
+            <marquee>SFO SYSTEM - You find it :)</marquee>
+        </div>
         @include('addtional.dev')
+    
     @endif
     <!-- 导航栏 -->
     <nav class="navbar navbar-default" role="navigation">
@@ -184,7 +188,7 @@
                     <h5>Help</h5>
                     <ul class="list-unstyled">
                         <li><a href="#">A</a></li>
-                        <li><a href="#">B</a></li>
+                        <li><a href="/0x00">B {{ Session::has('style') ? "(#)" : ""}}</a></li>
                         <li><a href="#">C</a></li>
                     </ul>
                 </div>
@@ -201,7 +205,7 @@
                     <ul class="list-unstyled">
                         <li><a href="#">A</a></li>
                         
-                        <li><a href="/0x00">B {{ Session::has('style') ? "(Don't touch me!) =w=" : ""}}</a></li>
+                        <li><a>B</a></li>
                        
                         <li><a href="/0xFF">C {{ Session::has('style') ? "" : "(#)"}}</a></li>
                     </ul>
@@ -241,7 +245,12 @@
             <p class="text-center" >&copy SEP (Group 06, WorkShop 05) Assignment Project 2017<p>
             @endif
     </footer>
-
+    @if (Session::has('style'))
+        <div class="alert">
+            <marquee direction="right">SFO SYSTEM - You find it :)</marquee>
+        </div>
+    
+    @endif
 </body>
         
 </html>

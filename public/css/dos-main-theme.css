@@ -4653,8 +4653,10 @@ html {
     color: #bbbbbb;
   }
   .alert {
-    padding: 19px 20px;
-    margin-bottom: 19px;
+    background-color: #00AAAA;
+    color:black;
+    padding: 5px 5px;
+    
   }
   .alert h4 {
     margin-top: 0;
