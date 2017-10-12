@@ -25,7 +25,7 @@ class CreateShopsTable extends Migration
             $table->string('shop_zipcode');
             $table->string('shop_country');
             $table->string('shop_phone');
-            
+            $table->integer('overall_rate');
             $table->integer('user_id')->unsigned();
            // $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();

@@ -9,11 +9,23 @@
              <div class="col-md-8"><h1>{{ $Shop->shop_name }}</h1><p>{{ $Shop->shop_des }}</p></div>
              <div class="col-md-2 text-center" ><h4>Area</h4><h3>{{ $Shop->shop_city }}</h3></div>
              <div class="col-md-2 text-center"><h4>Rating</h4><h3>
+             {{--
              <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
              <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
              <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
              <span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span>
-             
+            --}}
+            @if($Shop->feedbacks->count())
+                @for($i = 0;$i < 5; $i++)
+                    @if($i < $Shop->feedbacks->avg("rate"))
+                        <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+                    @else
+                        <span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span>
+                    @endif
+                @endfor
+            @else
+            N/A
+            @endif
 
              </h3></div>
         </div>
@@ -103,7 +115,56 @@
 
                
             </div>
-            <div role="tabpanel" class="tab-pane" id="comment">.ddd.</div>
+            <div role="tabpanel" class="tab-pane" id="comment">
+            
+            <!-- 商家评论 -->
+         
+          
+            <h3>All comments <small>({{$Shop->feedbacks->count()}})</small></h3>
+            <hr/>
+            @if($Shop->feedbacks->count())
+           
+            <div class="row">
+                @foreach($Shop->feedbacks as $feedback)
+                <div class="col-sm-1">
+                    <div class="thumbnail">
+                        <img class="img-responsive user-photo" src="https://ssl.gstatic.com/accounts/ui/avatar_2x.png">
+                    </div><!-- /thumbnail -->
+                </div><!-- /col-sm-1 -->
+
+                <div class="col-sm-11">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <strong>{{ $feedback->user->name }}</strong> <span class="text-muted">commented at {{ $feedback->created_at }}</span>
+                        </div>
+                        <div class="panel-body">
+                            {{$feedback->comment}}
+                            <span style="font-size:20px;" class="pull-right">
+                            @for($i = 0;$i < 5; $i++)
+                                @if($i < $feedback->rate)
+                                    <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+                                @else
+                                    <span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span>
+                                @endif
+                            @endfor
+                            </span>
+                            
+                            
+                        </div><!-- /panel-body -->
+                    </div><!-- /panel panel-default -->
+                </div><!-- /col-sm-5 -->
+                @endforeach
+            
+            </div><!-- /row -->
+
+            @else 
+                <h3 class="text-center">Currently there is no comment relate to this shop  :(</h3>
+            @endif
+
+
+
+            
+            </div>
             <div role="tabpanel" class="tab-pane" id="contact">
                 <h3>Address</h3>
                 <hr/>

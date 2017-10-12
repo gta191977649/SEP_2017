@@ -97,5 +97,71 @@
 
           </div>
         </div>
+
+        <script src="{{ asset('js/jquery.barrating.min.js') }}"></script>
+        <!-- Feedback & Rate -->
+        @if(Auth::user()->user_type == 0)
+        @if(!$transaction->isRate())
+        <div class="am-panel am-panel-default">
+          <div class="am-panel-hd">Rate</div>
+          <div class="am-panel-bd">
+            <form class="am-form" method="post" action="{{ route('feedback.create',['transactionid' => $transaction->id , 'shopid' => $transaction->shopSells->shop_id ]) }}">
+            {{csrf_field()}}
+            
+            <div class="am-form-group">
+                <label>What do you think this order?</label>
+                <select id="rate" name="rate">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
+                    <script>
+                        $(function() {
+                            $('#rate').barrating({
+                                theme: 'fontawesome-stars'
+                            });
+                        });
+                    </script>
+            </div>
+            <div class="am-form-group">
+                <label>Any comments?</label>
+                <textarea name="comment" id="comment" rows="4" required></textarea>
+            </div>
+            <input type="submit" value="Rate" class="am-btn am-btn-primary">
+            </form>
+          </div>
+        </div>
+        @else
+        <div class="am-panel am-panel-default">
+            <div class="am-panel-hd">Rate</div>
+            <div class="am-panel-bd">
+            <span style ="font-size:20px;">
+                Rate:
+            </span>
+            <br/>
+            <span style ="font-size:30px;">
+            @for($i = 0;$i < 5; $i++)
+                @if($i < $transaction->feedback->rate)
+                     <span class='am-icon-star'></span> 
+                @else
+                    <span class='am-icon-star-o'></span> 
+                @endif
+            @endfor
+            </span>
+            <br/>
+            <span style ="font-size:20px;">
+                Comment:
+            </span>
+            <p>
+                {{ $transaction->feedback->comment }}
+            </p>
+            
+            </div>
+        </div>
+        
+        @endif
+        @endif
 </div>
 @endsection

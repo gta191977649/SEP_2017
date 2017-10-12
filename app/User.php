@@ -46,10 +46,17 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\Order');
     }
+    public function feedbacks()
+    {
+        return $this->hasMany('App\Feedback');
+    }
+
 
     public function type()
     {
         return $this->user_type ? "Shop Owner" : "Customer";
     }
+
+
 
 }

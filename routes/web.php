@@ -49,7 +49,9 @@ Route::group(['middleware'=>'auth'],function(){
         'as' => 'ucp'
     ]);
 
-
+    //Feedback
+    Route::post('ucp/feedback/{transactionid}/{shopid}','FeedbackController@create')->name('feedback.create');
+    
     Route::get('ucp/test','UcpController@index');
     Route::get('ucp/index','UcpController@index')->name('ucp.index');
 
