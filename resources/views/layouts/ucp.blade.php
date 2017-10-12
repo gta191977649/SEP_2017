@@ -10,11 +10,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="renderer" content="webkit">
   <meta http-equiv="Cache-Control" content="no-siteapp" />
-  <link rel="icon" type="image/png" href="UCP/i/favicon.png">
+
   <link rel="apple-touch-icon-precomposed" href="{{ asset('UCP/i/app-icon72x72@2x.png') }}">
   <meta name="apple-mobile-web-app-title" content="UCP" />
   <link rel="stylesheet" href="{{ asset('UCP/css/amazeui.min.css') }}"/>
   <link rel="stylesheet" href="{{ asset('UCP/css/admin.css') }}">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
+  <link rel="stylesheet" href="{{ asset('css/fontawesome-stars.css') }}">
+   
 
     <!--[if lt IE 9]>
   <script src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>
@@ -28,6 +31,8 @@
   <!--<![endif]-->
   <script src="{{ asset('UCP/js/amazeui.min.js') }}"></script>
   <script src="{{ asset('UCP/js/app.js') }}"></script>
+  <link href="{{ asset('css/bootstrap-rating.css') }}" rel="stylesheet" type="text/css"> 
+
 </head>
 
 <body>

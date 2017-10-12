@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Auth;
 use App\Transaction;
+use App\ShopSell;
 
 
 class TransactionAdminController extends Controller
@@ -40,7 +41,8 @@ class TransactionAdminController extends Controller
 
     public function show($id){
         $transaction = Transaction::findOrFail($id);
-      
+        
+        
 
         //return $transaction;
         //return $transaction->transactionItems;

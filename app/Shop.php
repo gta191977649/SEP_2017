@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Shop extends Model
 {
-    protected $fillable=['id', 'shop_name', 'shop_pic','shop_des', 'shop_street_number', 'shop_street', 'shop_city', 'shop_state', 'shop_zipcode', 'shop_country', 'user_id','shop_phone'];
+    protected $fillable=['id', 'shop_name', 'shop_pic','shop_des', 'shop_street_number', 'shop_street', 'shop_city', 'shop_state', 'shop_zipcode', 'shop_country', 'user_id','shop_phone','overall_rate'];
 
     public function dishs()
     {
@@ -26,4 +26,10 @@ class Shop extends Model
     {
         return $this->hasMany('App\ShopSell');
     }
+    
+    public function feedbacks()
+    {
+        return $this->hasMany('App\Feedback');
+    }
+
 }
