@@ -188,7 +188,7 @@
                     <h5>Help</h5>
                     <ul class="list-unstyled">
                         <li><a href="#">A</a></li>
-                        <li><a href="/0x00">B {{ Session::has('style') ? "(#)" : ""}}</a></li>
+                        <li><a href="/0x00">B {{ Session::has('style') ? "(#) ???" : ""}}</a></li>
                         <li><a href="#">C</a></li>
                     </ul>
                 </div>
@@ -207,7 +207,7 @@
                         
                         <li><a>B</a></li>
                        
-                        <li><a href="/0xFF">C {{ Session::has('style') ? "" : "(#)"}}</a></li>
+                        <li><a href="/0xFF">C {{ Session::has('style') ? "" : "(#) ???"}}</a></li>
                     </ul>
                 </div>
 
